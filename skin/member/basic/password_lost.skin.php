@@ -22,7 +22,6 @@ if($config['cf_cert_use'] && ($config['cf_cert_simple'] || $config['cf_cert_ipin
             <label for="mb_email" class="sound_only">E-mail 주소<strong class="sound_only">필수</strong></label>
             <input type="text" name="mb_email" id="mb_email" required class="required frm_input full_input email" size="30" placeholder="E-mail 주소">
         </fieldset>
-        <?php echo captcha_html();  ?>
 
         <div class="win_btn">
             <button type="submit" class="btn_submit">인증메일 보내기</button>
@@ -110,7 +109,6 @@ $(function() {
 });
 function fpasswordlost_submit(f)
 {
-    <?php echo chk_captcha_js();  ?>
 
     return true;
 }

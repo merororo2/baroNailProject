@@ -31,15 +31,10 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_JS_URL.'/owlcarousel/owl.carou
      
 	<div id="tnb">
     	<div class="inner">
-            <?php if(defined('G5_COMMUNITY_USE') == false || G5_COMMUNITY_USE) { ?>
-    		<ul id="hd_define">
-    			<li><a href="<?php echo G5_URL ?>/">커뮤니티</a></li>
-    			<li class="active"><a href="<?php echo G5_SHOP_URL ?>/">쇼핑몰</a></li>
-    		</ul>
-            <?php } ?>
+    
 			<ul id="hd_qnb">
-	            <li><a href="<?php echo G5_BBS_URL ?>/faq.php">FAQ</a></li>
-	            <li><a href="<?php echo G5_BBS_URL ?>/qalist.php">1:1문의</a></li>
+	            <li><a href="<?php echo G5_SHOP_URL ?>/faq.php">FAQ</a></li>
+	            <li><a href="<?php echo G5_SHOP_URL ?>/qalist.php">1:1문의</a></li>
 	            <li><a href="<?php echo G5_SHOP_URL ?>/personalpay.php">개인결제</a></li>
 	            <li><a href="<?php echo G5_SHOP_URL ?>/itemuselist.php">사용후기</a></li> 
 	            <li><a href="<?php echo G5_SHOP_URL ?>/itemqalist.php">상품문의</a></li>
@@ -48,7 +43,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_JS_URL.'/owlcarousel/owl.carou
 	</div>
     <div id="hd_wrapper">
         <div id="logo">
-        	<a href="<?php echo G5_SHOP_URL; ?>/"><img src="<?php echo G5_DATA_URL; ?>/common/logo_img" alt="<?php echo $config['cf_title']; ?>"></a>
+        	<a href="/" style="color:white; font-size:32px">바로네일</a>
         </div>
 		
 		<div class="hd_sch_wr">

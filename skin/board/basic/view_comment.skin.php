@@ -156,9 +156,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
             <span class="sound_only">SNS 동시등록</span>
             <span id="bo_vc_send_sns"></span>
             <?php } ?>
-            <?php if ($is_guest) { ?>
-                <?php echo $captcha_html; ?>
-            <?php } ?>
+          
         </div>
         <div class="btn_confirm">
         	<span class="secret_cm chk_box">
@@ -261,7 +259,6 @@ function fviewcomment_submit(f)
         }
     }
 
-    <?php if($is_guest) echo chk_captcha_js();  ?>
 
     set_comment_token(f);
 

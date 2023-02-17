@@ -6,129 +6,194 @@ if (G5_IS_MOBILE) {
     return;
 }
 
-if(! defined('_INDEX_')) define('_INDEX_', TRUE);
+if (!defined('_INDEX_')) define('_INDEX_', true);
 
 include_once(G5_THEME_SHOP_PATH.'/shop.head.php');
 ?>
 
-<!-- 메인이미지 시작 { -->
-<?php echo display_banner('메인', 'mainbanner.10.skin.php'); ?>
-<!-- } 메인이미지 끝 -->
-
-<?php if($default['de_type1_list_use']) { ?>
-<!-- 히트상품 시작 { -->
-<section id="idx_hit" class="sct_wrap">
-    <header>
-        <h2><a href="<?php echo shop_type_url('1'); ?>">히트상품</a></h2>
-    </header>
-    <?php
-    $list = new item_list();
-    $list->set_type(1);
-    $list->set_view('it_img', true);
-    $list->set_view('it_id', false);
-    $list->set_view('it_name', true);
-    $list->set_view('it_basic', true);
-    $list->set_view('it_cust_price', true);
-    $list->set_view('it_price', true);
-    $list->set_view('it_icon', true);
-    $list->set_view('sns', true);
-    $list->set_view('star', true);
-    echo $list->run();
-    ?>
+<section id="idx_banner">
+    <?php echo display_banner('메인', 'mainbanner.10.skin.php'); // 큰 배너 1 ?>
 </section>
-<!-- } 히트상품 끝 -->
-<script>
-//히트상품
-$(function(){
-    var hit_smt_val = parseInt($('#idx_hit .smt_40').attr("data-value"));
-    
-    if(! hit_smt_val){
-        hit_smt_val = 5;
-    }
 
-	$('#idx_hit .smt_40').owlCarousel({
-	    loop:true,
-	    nav:true,
-	    autoplay:true,
-        autoplayHoverPause:true,
-	    responsive:{
-	        1000:{items: hit_smt_val}
-	    }
-	})
+
+
+<div id="product_Item">
+
+    <?php if($default['de_type4_list_use']) { ?>
+    <!-- 인기상품 시작 { -->
+    <section class="main">
+        <div class="sale_prd">
+            <h2><a href="<?php echo shop_type_url('4'); ?>">인기상품</a></h2>
+            <ul class="bxslider">
+                <?php
+		$list = new item_list();
+		$list->set_type(4);
+		$list->set_view('it_img', true);
+		$list->set_view('it_id', false);
+		$list->set_view('it_name', true);
+		$list->set_view('it_basic', false);
+		$list->set_view('it_cust_price', false);
+		$list->set_view('it_price', true);
+		$list->set_view('sns', false);
+		$list->set_view('star', true);
+		echo $list->run();
+		?>
+            </ul>
+
+        </div>
+    </section>
+    <!-- } 인기상품 끝 -->
+    <?php } ?>
+
+    <?php if($default['de_type5_list_use']) { ?>
+    <!-- 인기상품 시작 { -->
+    <section class="main">
+        <div class="sale_prd">
+            <h2><a href="<?php echo shop_type_url('5'); ?>">할인상품</a></h2>
+            <ul class="bxslider">
+                <?php
+		$list = new item_list();
+		$list->set_type(5);
+		$list->set_view('it_img', true);
+		$list->set_view('it_id', false);
+		$list->set_view('it_name', true);
+		$list->set_view('it_basic', false);
+		$list->set_view('it_cust_price', false);
+		$list->set_view('it_price', true);
+		$list->set_view('it_icon', true);
+		$list->set_view('sns', false);
+		$list->set_view('star', true);
+		echo $list->run();
+		?>
+            </ul>
+        </div>
+    </section>
+    <!-- } 인기상품 끝 -->
+    <?php } ?>
+
+
+
+
+    <div class="tab">
+        <ul class="tabnav">
+            <li><a href="#tab01">히트상품</a></li>
+            <li><a href="#tab02">추천상품</a></li>
+            <li><a href="#tab03">최신상품</a></li>
+
+
+        </ul>
+        <div class="tabcontent">
+            <div id="tab01">
+                <?php if($default['de_type1_list_use']) { ?>
+                <!-- 인기상품 시작 { -->
+                <section class="main">
+                    <div class="sale_prd">
+                        <?php
+		$list = new item_list();
+		$list->set_type(1);
+		$list->set_view('it_img', true);
+		$list->set_view('it_id', false);
+		$list->set_view('it_name', true);
+		$list->set_view('it_basic', false);
+		$list->set_view('it_cust_price', false);
+		$list->set_view('it_price', true);
+		$list->set_view('it_icon', true);
+		$list->set_view('sns', false);
+		$list->set_view('star', true);
+		echo $list->run();
+		?>
+                    </div>
+                </section>
+                <!-- } 인기상품 끝 -->
+                <?php } ?>
+
+            </div>
+            <div id="tab02">
+                <?php if($default['de_type2_list_use']) { ?>
+                <!-- 인기상품 시작 { -->
+                <section class="main">
+                    <div class="sale_prd">
+                        <?php
+		$list = new item_list();
+		$list->set_type(2);
+		$list->set_view('it_img', true);
+		$list->set_view('it_id', false);
+		$list->set_view('it_name', true);
+		$list->set_view('it_basic', false);
+
+		$list->set_view('it_cust_price', false);
+		$list->set_view('it_price', true);
+		$list->set_view('it_icon', true);
+		$list->set_view('sns', false);
+		$list->set_view('star', true);
+		echo $list->run();
+		?>
+                    </div>
+                </section>
+                <!-- } 인기상품 끝 -->
+                <?php } ?>
+
+            </div>
+            <div id="tab03">
+                <?php if($default['de_type3_list_use']) { ?>
+                <!-- 인기상품 시작 { -->
+                <section class="main">
+                    <div class="sale_prd">
+                        <?php
+		$list = new item_list();
+		$list->set_type(3);
+		$list->set_view('it_img', true);
+		$list->set_view('it_id', false);
+		$list->set_view('it_name', true);
+		$list->set_view('it_basic', false);
+		$list->set_view('it_cust_price', false);
+		$list->set_view('it_price', true);
+		$list->set_view('it_icon', true);
+		$list->set_view('sns', false);
+		$list->set_view('star', true);
+		echo $list->run();
+		?>
+                    </div>
+                </section>
+                <!-- } 인기상품 끝 -->
+                <?php } ?>
+            </div>
+
+        </div>
+    </div>
+    <!--tab-->
+
+
+</div>
+
+<script>
+$(function() {
+    $('.tabcontent > div').hide();
+    $('.tabnav a').click(function() {
+        $('.tabcontent > div').hide().filter(this.hash).fadeIn();
+        $('.tabnav a').removeClass('active');
+        $(this).addClass('active');
+        return false;
+    }).filter(':eq(0)').click();
 });
 </script>
-<?php } ?>
+<script>
+$(document).ready(function() {
+    $('.bxslider').bxSlider({
+        mode: 'horizontal',
+        slideMargin: 5,
+        auto: true, // 자동 실행 여부
+        controls: false, // 이전 다음 버튼 노출 여부
+        pager: false
 
-<?php if($default['de_type3_list_use']) { ?>
-<!-- 최신상품 시작 { -->
-<section class="sct_wrap">
-    <header>
-        <h2><a href="<?php echo shop_type_url('3'); ?>">최신상품</a></h2>
-    </header>
-    <?php
-    $list = new item_list();
-    $list->set_type(3);
-    $list->set_view('it_id', false);
-    $list->set_view('it_name', true);
-    $list->set_view('it_basic', true);
-    $list->set_view('it_cust_price', true);
-    $list->set_view('it_price', true);
-    $list->set_view('it_icon', true);
-    $list->set_view('sns', true);
-    $list->set_view('star', true);
-    echo $list->run();
-    ?>
-</section>
-<!-- } 최신상품 끝 -->
-<?php } ?>
+    });
+});
+</script>
 
-<?php if($default['de_type2_list_use']) { ?>
-<!-- 추천상품 시작 { -->
-<section class="sct_wrap">
-    <header>
-        <h2><a href="<?php echo shop_type_url('2'); ?>">추천상품</a></h2>
-    </header>
-    <?php
-    $list = new item_list();
-    $list->set_type(2);
-    $list->set_view('it_id', false);
-    $list->set_view('it_name', true);
-    $list->set_view('it_basic', true);
-    $list->set_view('it_cust_price', true);
-    $list->set_view('it_price', true);
-    $list->set_view('it_icon', true);
-    $list->set_view('sns', true);
-    $list->set_view('star', true);
-    echo $list->run();
-    ?>
-</section>
-<!-- } 추천상품 끝 -->
-<?php } ?>
-
-<?php include_once(G5_SHOP_SKIN_PATH.'/boxevent.skin.php'); // 이벤트 ?>
-
-<?php if($default['de_type5_list_use']) { ?>
-<!-- 할인상품 시작 { -->
-<section class="sct_wrap">
-    <header>
-        <h2><a href="<?php echo shop_type_url('5'); ?>">할인상품</a></h2>
-    </header>
-    <?php
-    $list = new item_list();
-    $list->set_type(5);
-    $list->set_view('it_id', false);
-    $list->set_view('it_name', true);
-    $list->set_view('it_basic', true);
-    $list->set_view('it_cust_price', true);
-    $list->set_view('it_price', true);
-    $list->set_view('it_icon', true);
-    $list->set_view('sns', true);
-    $list->set_view('star', true);
-    echo $list->run();
-    ?>
-</section>
-<!-- } 할인상품 끝 -->
-<?php } ?>
+<script>
+$("#container_inner").removeClass("container").addClass("idx-container");
+</script>
 
 <?php
 include_once(G5_THEME_SHOP_PATH.'/shop.tail.php');
+?>

@@ -289,10 +289,7 @@ gif, jpg, png파일만 가능하며 용량 <?php echo number_format($config['cf_
 	            </li>
 	            <?php }  ?>
 	
-	            <li class="is_captcha_use">
-	                자동등록방지
-	                <?php echo captcha_html(); ?>
-	            </li>
+	           
 	        </ul>
 	    </div>
 	</div>
@@ -493,7 +490,6 @@ function fregisterform_submit(f)
         }
     }
 
-    <?php echo chk_captcha_js();  ?>
 
     document.getElementById("btn_submit").disabled = "disabled";
 

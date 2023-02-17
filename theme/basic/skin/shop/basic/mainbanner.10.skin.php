@@ -65,15 +65,7 @@ if ($i > 0) {
     
     echo '<div class="main_owl_pager">'.PHP_EOL;
         echo '<div class="owl_pager">
-    <ul class="carousel-custom-dots owl-dots">';
-		$k = 0;
-		foreach( $main_banners as $row ){
-            $alt_title = $row['bn_alt'] ? cut_str(get_text($row['bn_alt']), 12, '') : '&nbsp;';
-			echo '<li class="owl-dot"><a data-slide-index="'.$k.'" href="#">'.$alt_title.'</a></li>'.PHP_EOL;
-			$k++;
-			}
-		
-    echo '</ul>
+    
     </div>'.PHP_EOL;
     echo '</div>'.PHP_EOL;
     echo '</div>'.PHP_EOL;

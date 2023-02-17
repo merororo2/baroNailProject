@@ -11,6 +11,7 @@ $mshop_categories = get_shop_category_array(true);
 <nav id="gnb">
     <h2>쇼핑몰 카테고리</h2>
     <ul id="gnb_1dul">
+    <li class="gnb_1dli"><button type="button" id="menu_open"><i class="fa fa-bars" aria-hidden="true"></i> <span>카테고리</span></button></li>
         <?php
         // 1단계 분류 판매 가능한 것만
         $gnb_zindex = 999; // gnb_1dli z-index 값 설정용
