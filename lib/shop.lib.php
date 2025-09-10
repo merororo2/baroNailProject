@@ -396,7 +396,17 @@ function get_image($img, $width=0, $height=0, $img_id='')
     return $str;
 }
 
+function get_item_new_image($it_id,$width,$height,$img_alt) {
 
+$row = get_shop_item($it_id, true);
+
+for($i = 1; $i <= 10; $i++) {
+    $file = $row['it_img'.$i];
+    $img = '<img src="'.$file.'" width="'.$width.'" height="'.$height.'" alt="'.$img_alt.'"';
+    return $img;
+}
+
+}
 // 상품 이미지를 얻는다
 function get_it_image($it_id, $width, $height=0, $anchor=false, $img_id='', $img_alt='', $is_crop=false)
 {
@@ -406,15 +416,14 @@ function get_it_image($it_id, $width, $height=0, $anchor=false, $img_id='', $img
         return '';
 
     $row = get_shop_item($it_id, true);
-
     if(!$row['it_id'])
         return '';
-
+   
     $filename = $thumb = $img = '';
-    
     $img_width = 0;
     for($i=1;$i<=10; $i++) {
-        $file = G5_DATA_PATH.'/item/'.$row['it_img'.$i];
+        // $file = G5_DATA_PATH.'/item/'.$row['it_img'.$i];
+       $file = $row['it_img'.$i];
         if(is_file($file) && $row['it_img'.$i]) {
             $size = @getimagesize($file);
             if(! isset($size[2]) || $size[2] < 1 || $size[2] > 3)

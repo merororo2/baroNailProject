@@ -10,24 +10,25 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
 <!-- 전체 상품 문의 목록 시작 { -->
 
 <form method="get" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
-<div id="sqa_sch">
-    <label for="sfl" class="sound_only">검색항목 필수</label>
-    <select name="sfl" id="sfl" required>
-        <option value="">선택</option>
-        <option value="b.it_name"    <?php echo get_selected($sfl, "b.it_name", true); ?>>상품명</option>
-        <option value="a.it_id"      <?php echo get_selected($sfl, "a.it_id"); ?>>상품코드</option>
-        <option value="a.iq_subject" <?php echo get_selected($sfl, "a.iq_subject"); ?>>문의제목</option>
-        <option value="a.iq_question"<?php echo get_selected($sfl, "a.iq_question"); ?>>문의내용</option>
-        <option value="a.iq_name"    <?php echo get_selected($sfl, "a.iq_name"); ?>>작성자명</option>
-        <option value="a.mb_id"      <?php echo get_selected($sfl, "a.mb_id"); ?>>작성자아이디</option>
-    </select>
-	<div class="sch_wr">
-    	<label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-    	<input type="text" name="stx" value="<?php echo $stx; ?>" id="stx" required class="sch_input">
-    	<button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+    <div id="sqa_sch">
+        <label for="sfl" class="sound_only">검색항목 필수</label>
+        <select name="sfl" id="sfl" required>
+            <option value="">선택</option>
+            <option value="b.it_name" <?php echo get_selected($sfl, "b.it_name", true); ?>>상품명</option>
+            <option value="a.it_id" <?php echo get_selected($sfl, "a.it_id"); ?>>상품코드</option>
+            <option value="a.iq_subject" <?php echo get_selected($sfl, "a.iq_subject"); ?>>문의제목</option>
+            <option value="a.iq_question" <?php echo get_selected($sfl, "a.iq_question"); ?>>문의내용</option>
+            <option value="a.iq_name" <?php echo get_selected($sfl, "a.iq_name"); ?>>작성자명</option>
+            <option value="a.mb_id" <?php echo get_selected($sfl, "a.mb_id"); ?>>작성자아이디</option>
+        </select>
+        <div class="sch_wr">
+            <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+            <input type="text" name="stx" value="<?php echo $stx; ?>" id="stx" required class="sch_input">
+            <button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span
+                    class="sound_only">검색</span></button>
+        </div>
+        <a href="<?php echo $_SERVER['SCRIPT_NAME']; ?>">전체보기</a>
     </div>
-    <a href="<?php echo $_SERVER['SCRIPT_NAME']; ?>">전체보기</a>
-</div>
 </form>
 
 <div id="sqa">
@@ -80,9 +81,9 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
         </div>
 
         <section class="sqa_section">
-            <h2><?php echo $iq_subject; ?></h2>
-			<span class="<?php echo $iq_style; ?>"><?php echo $iq_stats; ?></span>
-			
+            <h2 class="sqa_title"><?php echo $iq_subject; ?></h2>
+            <span class="<?php echo $iq_style; ?>"><?php echo $iq_stats; ?></span>
+
             <dl class="sqa_dl">
                 <dt class="sound_only">작성자</dt>
                 <dd><i class="fa fa-user" aria-hidden="true"></i> <?php echo $row['iq_name']; ?></dd>
@@ -105,7 +106,8 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
                 <?php } ?>
             </div>
 
-            <div class="sqa_con_btn"><button class="sqa_con_<?php echo $i; ?>">내용보기 <i class="fa fa-caret-down" aria-hidden="true"></i></button></div>
+            <div class="sqa_con_btn" style="display:none"><button class="sqa_con_<?php echo $i; ?>">내용보기 <i
+                        class="fa fa-caret-down" aria-hidden="true"></i></button></div>
         </section>
 
     </li>
@@ -121,13 +123,13 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 
 <?php echo get_paging($config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 
 <script>
-$(function(){
+$(function() {
     // 상품문의 더보기
-    $(".sqa_con_btn button").click(function(){
-        var $con = $(this).parent().prev();
-        if($con.is(":visible")) {
+    $(".sqa_title").click(function() {
+        var $con = $(this).next().next().next();
+        console.log($con);
+        if ($con.is(":visible")) {
             $con.slideUp();
-            $(this).html("내용보기 <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>");
         } else {
             $("div[id^=sqa_con]:visible").hide();
             $con.slideDown(
@@ -136,7 +138,6 @@ $(function(){
                     $con.viewimageresize2();
                 }
             );
-            $(this).html("내용닫기 <i class=\"fa fa-caret-up\" aria-hidden=\"true\"></i>");
         }
     });
 });

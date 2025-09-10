@@ -87,52 +87,49 @@ if($this->total_count > 0) {
 
 <script>
 (function($) {
-    $.fn.BestSlide = function(option)
-    {
+    $.fn.BestSlide = function(option) {
         var cfg = {
-                wrap: ".slide-wrap",
-                slides: ".slide-wrap > ul",
-                buttons: ".bst_silde_btn > button",
-                btnActive: "bst_sl",
-                startSlide: 0,
-                auto: 0,
-                continuous: true,
-                disableScroll: false,
-                stopPropagation: false,
-                callback: function(index, element) {
-                  button_change(index);
-                },
-                transitionEnd: function(index, element) {
-                    idx = index;
-                }
-            };
+            wrap: ".slide-wrap",
+            slides: ".slide-wrap > ul",
+            buttons: ".bst_silde_btn > button",
+            btnActive: "bst_sl",
+            startSlide: 0,
+            auto: 0,
+            continuous: true,
+            disableScroll: false,
+            stopPropagation: false,
+            callback: function(index, element) {
+                button_change(index);
+            },
+            transitionEnd: function(index, element) {
+                idx = index;
+            }
+        };
 
-        if(typeof option == "object")
-            cfg = $.extend( cfg, option );
+        if (typeof option == "object")
+            cfg = $.extend(cfg, option);
 
-        var $wrap = this.find(""+cfg.wrap+"");
-        var $slides = this.find(""+cfg.slides+"");
-        var $btns = this.find(""+cfg.buttons+"");
+        var $wrap = this.find("" + cfg.wrap + "");
+        var $slides = this.find("" + cfg.slides + "");
+        var $btns = this.find("" + cfg.buttons + "");
 
         var idx = cfg.startSlide;
         var count = $slides.length;
         var width, outerW;
 
-        if(count < 1)
+        if (count < 1)
             return;
 
-        function button_change(idx)
-        {
-            if(count < 2)
+        function button_change(idx) {
+            if (count < 2)
                 return;
 
             $btns.removeClass(cfg.btnActive)
-                 .eq(idx).addClass(cfg.btnActive);
+                .eq(idx).addClass(cfg.btnActive);
         }
 
-        function init()
-        {
-            width  = $slides.eq(0).width();
+        function init() {
+            width = $slides.eq(0).width();
             outerW = $slides.eq(0).outerWidth(true);
 
             $slides.width(width);
@@ -154,9 +151,9 @@ if($this->total_count > 0) {
             init();
         });
 
-        if(count > 0 && mySwipe) {
+        if (count > 0 && mySwipe) {
             $btns.on("click", function() {
-                if($(this).hasClass(""+cfg.btnActive+""))
+                if ($(this).hasClass("" + cfg.btnActive + ""))
                     return false;
 
                 idx = $btns.index($(this));

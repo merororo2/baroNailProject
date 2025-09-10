@@ -14,6 +14,7 @@ if($skin)
     $sct_sort_href .= '&amp;skin='.$skin;
 $sct_sort_href .= '&amp;sort=';
 
+
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_CSS_URL.'/style.css">', 0);
 ?>
@@ -32,14 +33,19 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_CSS_URL.'/style.css">', 0
         <li><a href="<?php echo $sct_sort_href; ?>it_type5&amp;sortodr=desc">할인상품</a></li>
     </ul>
 	-->
-
     <ul id="ssch_sort">
-        <li><a href="<?php echo $sct_sort_href; ?>it_sum_qty&amp;sortodr=desc">판매많은순</a></li>
-        <li><a href="<?php echo $sct_sort_href; ?>it_price&amp;sortodr=asc">낮은가격순</a></li>
-        <li><a href="<?php echo $sct_sort_href; ?>it_price&amp;sortodr=desc">높은가격순</a></li>
-        <li><a href="<?php echo $sct_sort_href; ?>it_use_avg&amp;sortodr=desc">평점높은순</a></li>
-        <li><a href="<?php echo $sct_sort_href; ?>it_use_cnt&amp;sortodr=desc">후기많은순</a></li>
-        <li><a href="<?php echo $sct_sort_href; ?>it_update_time&amp;sortodr=desc">최근등록순</a></li>
+        <li><a class="<?php if ($sort == 'it_sum_qty') {?>active<?php } else{ ?>  <?php } ?>"
+                href="<?php echo $sct_sort_href; ?>it_sum_qty&amp;sortodr=desc">판매많은순</a></li>
+        <li><a class="<?php if ( $sort == 'it_price' && $sortodr == 'asc') {?>active<?php } else{ ?>  <?php } ?>"
+                href="<?php echo $sct_sort_href; ?>it_price&amp;sortodr=asc">낮은가격순</a></li>
+        <li><a class="<?php if ( $sort == 'it_price' && $sortodr == 'desc') {?>active<?php } else{ ?>  <?php } ?>"
+                href="<?php echo $sct_sort_href; ?>it_price&amp;sortodr=desc">높은가격순</a></li>
+        <li><a class="<?php if ( $sort == 'it_use_avg') {?>active<?php } else{ ?>  <?php } ?>"
+                href="<?php echo $sct_sort_href; ?>it_use_avg&amp;sortodr=desc">평점높은순</a></li>
+        <li><a class="<?php if ( $sort == 'it_use_cnt') {?>active<?php } else{ ?>  <?php } ?>"
+                href="<?php echo $sct_sort_href; ?>it_use_cnt&amp;sortodr=desc">후기많은순</a></li>
+        <li><a class="<?php if ( $sort == 'it_update_time') {?>active<?php } else{ ?>  <?php } ?>"
+                href="<?php echo $sct_sort_href; ?>it_update_time&amp;sortodr=desc">최근등록순</a></li>
     </ul>
 </section>
 <!-- } 상품 정렬 선택 끝 -->

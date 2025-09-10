@@ -4,9 +4,18 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 0);
 
-
+/*
+상품리스트가 일정 시간마다 위로 롤링되는 스킨
+롤링되기 위해서는 상품이 2줄 이상이어야 함
+*/
 ?>
 
+<!-- 이전 재생 정지 다음 버튼 시작 { -->
+<ul id="btn_smt_<?php echo $this->type; ?>" class="sctrl">
+    <li><button type="button" class="sctrl_play">효과재생<span></span></button></li>
+    <li><button type="button" class="sctrl_stop">효과정지<span></span></button></li>
+</ul>
+<!-- } 이전 재생 정지 다음 버튼 끝 -->
 
 <!-- 상품진열 20 시작 { -->
 <?php
@@ -117,9 +126,8 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
     var intervals = {};
 
     var methods = {
-        init: function(option)
-        {
-            if(this.length < 1)
+        init: function(option) {
+            if (this.length < 1)
                 return false;
 
             var $smt = this.find("ul.sct_ul");
@@ -132,19 +140,19 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
 
             $smt.each(function() {
                 var h = $(this).outerHeight(true);
-                if(h > height)
+                if (h > height)
                     height = h;
             });
 
             $smt.each(function(index) {
-                if($(this).is(":visible")) {
+                if ($(this).is(":visible")) {
                     o_idx = index;
                     return false;
                 }
             });
 
             this.height(height);
-            $smt.eq(o_idx).siblings().css("top", height+"px");
+            $smt.eq(o_idx).siblings().css("top", height + "px");
 
             // 기본 설정값
             var settings = $.extend({
@@ -152,7 +160,7 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
                 duration: 800
             }, option);
 
-            if(count < 2)
+            if (count < 2)
                 return;
 
             set_interval();
@@ -176,23 +184,25 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
 
             function top_rolling() {
                 $smt.each(function(index) {
-                    if($(this).is(":visible")) {
+                    if ($(this).is(":visible")) {
                         o_idx = index;
                         return false;
                     }
                 });
 
-                $smt.eq(o_idx).animate(
-                    { top: "-="+height+"px" }, settings.duration,
+                $smt.eq(o_idx).animate({
+                        top: "-=" + height + "px"
+                    }, settings.duration,
                     function() {
-                        $(this).css("display", "none").css("top", height+"px");
+                        $(this).css("display", "none").css("top", height + "px");
                     }
                 );
 
                 c_idx = (o_idx + 1) % count;
 
-                $smt.eq(c_idx).css("display", "block").animate(
-                    { top: "-="+height+"px" }, settings.duration,
+                $smt.eq(c_idx).css("display", "block").animate({
+                        top: "-=" + height + "px"
+                    }, settings.duration,
                     function() {
                         o_idx = c_idx;
                     }
@@ -200,34 +210,35 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
             }
 
             function set_interval() {
-                if(count > 1) {
+                if (count > 1) {
                     clear_interval();
 
-                    if($("#btn_"+el_id).find("button.sctrl_stop").data("stop") == true)
+                    if ($("#btn_" + el_id).find("button.sctrl_stop").data("stop") == true)
                         return;
 
                     intervals[el_id] = setInterval(top_rolling, settings.interval);
 
                     // control 버튼 class
-                    $("#btn_"+el_id).find("button span").removeClass("sctrl_on").html("")
-                        .end().find("button.sctrl_play span").addClass("sctrl_on").html("<b class=\"sound_only\">선택됨</b>");
+                    $("#btn_" + el_id).find("button span").removeClass("sctrl_on").html("")
+                        .end().find("button.sctrl_play span").addClass("sctrl_on").html(
+                            "<b class=\"sound_only\">선택됨</b>");
                 }
             }
 
             function clear_interval() {
-                if(intervals[el_id]) {
+                if (intervals[el_id]) {
                     clearInterval(intervals[el_id]);
 
                     // control 버튼 class
-                    $("#btn_"+el_id).find("button span").removeClass("sctrl_on").html("")
-                        .end().find("button.sctrl_stop span").addClass("sctrl_on").html("<b class=\"sound_only\">선택됨</b>");
+                    $("#btn_" + el_id).find("button span").removeClass("sctrl_on").html("")
+                        .end().find("button.sctrl_stop span").addClass("sctrl_on").html(
+                            "<b class=\"sound_only\">선택됨</b>");
                 }
             }
         },
-        stop: function()
-        {
+        stop: function() {
             var el_id = this[0].id;
-            if(intervals[el_id])
+            if (intervals[el_id])
                 clearInterval(intervals[el_id]);
         }
     };
@@ -250,17 +261,17 @@ $(function() {
         $("#btn_smt_<?php echo $this->type; ?> button.sctrl_stop").data("stop", false);
 
         var id = $(this).closest(".sctrl").attr("id").replace("btn_", "");
-        $("#"+id).topRolling();
+        $("#" + id).topRolling();
         //$("#"+id).topRolling({ interval: 2000, duration: 800 });
     });
 
     // 애니메이션 stop
     $("#btn_smt_<?php echo $this->type; ?> button.sctrl_stop").on("click", function() {
-        if($(this).parent().siblings().find(".sctrl_on").length > 0) {
+        if ($(this).parent().siblings().find(".sctrl_on").length > 0) {
             $(this).parent().siblings().find("span").removeClass("sctrl_on").html("");
             $(this).children().addClass("sctrl_on").html("<b class=\"sound_only\">선택됨</b>");
             var id = $(this).closest(".sctrl").attr("id").replace("btn_", "");
-            $("#"+id).topRolling("stop");
+            $("#" + id).topRolling("stop");
 
             $(this).data("stop", true);
         }

@@ -1,7 +1,8 @@
 <?php
 include_once('./_common.php');
 
-define("_INDEX_", TRUE);
+if (!defined('_INDEX_')) define('_INDEX_', true);
+
 
 include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 ?>
@@ -9,111 +10,353 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 <script src="<?php echo G5_JS_URL; ?>/swipe.js"></script>
 <script src="<?php echo G5_JS_URL; ?>/shop.mobile.main.js"></script>
 
-    <?php echo display_banner('메인', 'mainbanner.10.skin.php'); ?>
+<?php echo display_banner('메인', 'mainbanner.10.skin.php'); ?>
 
-    <?php if($default['de_mobile_type1_list_use']) { ?>
-    <div class="sct_wrap">
-            <h2><a href="<?php echo shop_type_url('1'); ?>">히트상품</a></h2>
-        <?php
-        $list = new item_list();
-        $list->set_mobile(true);
-        $list->set_type(1);
-        $list->set_view('it_id', false);
-        $list->set_view('it_name', true);
-        $list->set_view('it_cust_price', true);
-        $list->set_view('it_price', true);
-        $list->set_view('it_icon', true);
-        $list->set_view('sns', false);
-        echo $list->run();
-        ?>
+
+
+
+<?php if($default['de_mobile_type3_list_use']) { ?>
+<!-- 최신상품 시작 { -->
+<div class="main" id="idx_hit">
+    <div class="sale_prd">
+
+        <div class="product-more-wrapper">
+            <div class="tab-title">
+                <p class="title">최신상품</p>
+                <a class="more" href="<?php echo shop_type_url('3'); ?>"><i class="fa-regular fa-square-plus"></i>
+                    더보기</a>
+            </div>
+            <div class="tab-menu">
+                <ul class="tabnav-new">
+                    <li>
+                        <a href="#all-tab">전체</a>
+                    </li>
+                    <li><a href="#nail-tab">네일</a></li>
+                    <li><a href="#cuticle-tab">큐티클</a></li>
+                    <li><a href="#gelnail-tab">젤네일</a></li>
+                    <li><a href="#gelsticker-tab">젤스티커</a></li>
+
+                </ul>
+            </div>
+
+            <div class="tabcontent-new">
+                <div id="all-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(3);
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="nail-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(3); // 베스트상품
+                            $list->set_category('10', 1); 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="cuticle-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(3); // 베스트상품
+                            $list->set_category('20', 1); // 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="gelnail-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+
+                            $list->set_type(3); // 베스트상품
+                            $list->set_category('30', 1); // 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="gelsticker-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(3); // 베스트상품
+                            $list->set_category('40', 1); // 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <?php } ?>
+</div>
 
-    <?php echo display_banner('왼쪽', 'boxbanner.skin.php'); ?>
 
-    <?php if($default['de_mobile_type2_list_use']) { ?>
-    <div class="sct_wrap">
-        <h2><a href="<?php echo shop_type_url('2');; ?>">추천상품</a></h2>
-        <?php
-        $list = new item_list();
-        $list->set_mobile(true);
-        $list->set_type(2);
-        $list->set_view('it_id', false);
-        $list->set_view('it_name', true);
-        $list->set_view('it_cust_price', true);
-        $list->set_view('it_price', true);
-        $list->set_view('it_icon', true);
-        $list->set_view('sns', true);
-        echo $list->run();
-        ?>
+<!-- } 최신상품 끝 -->
+
+
+<?php } ?>
+
+
+
+
+<?php if($default['de_mobile_type4_list_use']) { ?>
+<!-- 베스트상품 시작 { -->
+<div class="main" id="idx_hit">
+    <div class="sale_prd">
+
+        <div class="product-more-wrapper">
+            <div class="tab-title">
+                <p class="title">인기상품</p>
+                <a class="more" href="<?php echo shop_type_url('4'); ?>"><i class="fa-regular fa-square-plus"></i>
+                    더보기</a>
+            </div>
+            <div class="tab-menu">
+                <ul class="tabnav">
+                    <li>
+                        <a href="#all-tab">전체</a>
+                    </li>
+                    <li><a href="#nail-tab">네일</a></li>
+                    <li><a href="#cuticle-tab">큐티클</a></li>
+                    <li><a href="#gelnail-tab">젤네일</a></li>
+                    <li><a href="#gelsticker-tab">젤스티커</a></li>
+
+                </ul>
+            </div>
+
+            <div class="tabcontent">
+                <div id="all-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(4);
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="nail-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(4); // 베스트상품
+                            $list->set_category('10', 1); 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="cuticle-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(4); // 베스트상품
+                            $list->set_category('20', 1); // 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="gelnail-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+
+                            $list->set_type(4); // 베스트상품
+                            $list->set_category('30', 1); // 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="gelsticker-tab">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <?php
+                            $list = new item_list();
+                            $list->set_mobile(true);
+                            $list->set_type(4); // 베스트상품
+                            $list->set_category('40', 1); // 
+                            $list->set_view('it_id', false);
+                            $list->set_view('it_name', true);
+                            $list->set_view('it_basic', false);
+                            $list->set_view('it_cust_price', true);
+                            $list->set_view('it_price', true);
+                            $list->set_view('it_icon', false);
+                            $list->set_view('sns', false);
+                            echo $list->run();
+                        ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <?php } ?>
+</div>
 
-    <?php if($default['de_mobile_type3_list_use']) { ?>
-    <div class="sct_wrap">
-        <h2><a href="<?php echo shop_type_url('3');; ?>">최신상품</a></h2>
-        <?php
-        $list = new item_list();
-        $list->set_mobile(true);
-        $list->set_type(3);
-        $list->set_view('it_id', false);
-        $list->set_view('it_name', true);
-        $list->set_view('it_basic', true);
-        $list->set_view('it_cust_price', true);
-        $list->set_view('it_price', true);
-        $list->set_view('it_icon', true);
-        $list->set_view('sns', true);
-        echo $list->run();
-        ?>
-    </div>
-    <?php } ?>
 
-    <?php if($default['de_mobile_type4_list_use']) { ?>
-    <div class="sct_wrap">
-        <h2><a href="<?php echo shop_type_url('4'); ?>">인기상품</a></h2>
-        <?php
-        $list = new item_list();
-        $list->set_mobile(true);
-        $list->set_type(4);
-        $list->set_view('it_id', false);
-        $list->set_view('it_name', true);
-        $list->set_view('it_cust_price', false);
-        $list->set_view('it_price', true);
-        $list->set_view('it_icon', false);
-        $list->set_view('sns', false);
-        echo $list->run();
-        ?>
-    </div>
-    <?php } ?>
+<!-- } 최신상품 끝 -->
 
-    <?php if($default['de_mobile_type5_list_use']) { ?>
-    <div class="sct_wrap">
-        <h2><a href="<?php echo shop_type_url('5'); ?>">할인상품</a></h2>
-        <?php
-        $list = new item_list();
-        $list->set_mobile(true);
-        $list->set_type(5);
-        $list->set_view('it_id', false);
-        $list->set_view('it_name', true);
-        $list->set_view('it_cust_price', false);
-        $list->set_view('it_price', true);
-        $list->set_view('it_icon', false);
-        $list->set_view('sns', false);
-        echo $list->run();
-        ?>
-    </div>
-    <?php } ?>
 
-    <?php include_once(G5_MSHOP_SKIN_PATH.'/main.event.skin.php'); // 이벤트 ?>
+<?php } ?>
 
-    <!-- 커뮤니티 최신글 시작 { -->
-    <section id="sidx_lat">
-        <?php echo latest('theme/shop_basic', 'notice', 3, 30); ?>
-    </section>
+
+
+
 
 
 <script>
-    $("#container").addClass("idx-container");
+$(function() {
+    $('.tabcontent-new > div').hide();
+    $('.tabnav-new a').click(function() {
+        $('.tabcontent-new > div').hide().filter(this.hash).fadeIn();
+        $('.tabnav-new a').removeClass('active');
+        $(this).addClass('active');
+        return false;
+    }).filter(':eq(0)').click();
+});
+$(function() {
+    $('.tabcontent > div').hide();
+    $('.tabnav a').click(function() {
+        $('.tabcontent > div').hide().filter(this.hash).fadeIn();
+        $('.tabnav a').removeClass('active');
+        $(this).addClass('active');
+        return false;
+    }).filter(':eq(0)').click();
+});
+
+
+//최신 상품 이미지슬라이드
+const product_image_slide = new Swiper(".swiper-container", {
+    centeredSlides: true, //센터모드
+
+    autoplay: { //자동슬라이드 
+        delay: 5000, // 슬라이드 시간 설정
+    },
+
+});
+
+// 베스트 상품 이미지 슬라이드
+</script>
+
+<script>
+$("#container").addClass("idx-container");
 </script>
 
 <?php

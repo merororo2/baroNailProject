@@ -2,6 +2,7 @@
 
 /* 초기화 */
 html {
+  -webkit-tap-highlight-color: transparent;
   overflow-y: scroll;
 }
 body {
@@ -215,13 +216,21 @@ a {
 
 #logo {
   float: left;
-  padding: 23px 0 0;
 }
+
 .hd_sch_wr {
   float: left;
   padding: 30px 0;
   width: 445px;
   margin-left: 65px;
+}
+@media (max-width: 600px) {
+  .hd_sch_wr {
+    display: none;
+  }
+  #tnb {
+    display: none;
+  }
 }
 #hd_sch h3 {
   position: absolute;
@@ -230,14 +239,16 @@ a {
   overflow: hidden;
 }
 
+#hd_sch {
+  width: 100%;
+  height: 100%;
+}
 #hd_sch #sch_str {
-  padding-left: 20px;
   height: 45px;
-  background: #efefef;
   border: 0;
-  width: 380px;
+  width: 720px;
   float: left;
-  font-size: 1.25em;
+  font-size: 24px;
   vertical-align: top;
   outline: none;
 }
@@ -293,7 +304,6 @@ a {
   position: relative;
   text-align: center;
   margin: 15px 10px 15px 0;
-  padding-right: 10px;
 }
 #hd_define li:last-child {
   padding-right: 0;
@@ -306,6 +316,10 @@ a {
 }
 #hd_define li.active a {
   color: #fff;
+}
+#hd_qnb {
+  max-width: 1200px;
+  margin: auto;
 }
 
 #hd_qnb li .admin_btn {
@@ -332,9 +346,10 @@ a {
   top: 50%;
   left: 65%;
   background: #fff;
-  padding: 40px;
+  padding: 30px;
   text-align: left;
   width: 450px;
+  height: auto;
   max-height: 490px;
   margin-left: -500px;
   margin-top: -250px;
@@ -355,10 +370,10 @@ a {
 #hd_qnb li .login_cls_btn {
   position: absolute;
   right: 0;
-  top: -40px;
+  top: -20px;
   border: 0;
   background: transparent;
-  color: #fff;
+  color: #000;
   font-size: 1.8em;
   -webkit-transition: -webkit-transform 0.8s ease-in-out;
   -ms-transition: -ms-transform 0.8s ease-in-out;
@@ -370,25 +385,32 @@ a {
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+#hd_qnb li .mypage {
+  color: black;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
 #hd_qnb li .login_btn {
   border: none;
   background: none;
   color: black;
-  padding: 8px 10px;
   font-size: 14px;
   font-weight: bold;
+  margin-right: 15px;
 }
 #hd_qnb li .logout_btn {
   color: black;
   vertical-align: middle;
-  padding: 8px 10px;
   font-size: 14px;
   font-weight: bold;
+  margin-right: 20px;
 }
 #hd_qnb li .cart {
   color: black;
   vertical-align: middle;
-  padding: 8px 10px;
   font-size: 14px;
   font-weight: bold;
 }
@@ -454,8 +476,8 @@ a {
   font-size: 1.083em;
   line-height: 15px;
   position: relative;
+  padding-top: 10px;
   text-align: center;
-  margin-top: 30px;
 }
 #hd_qnb > li span {
   display: block;
@@ -464,7 +486,6 @@ a {
 #hd_qnb > li a {
   display: inline-block;
   color: #000;
-  padding: 5px;
 }
 #hd_qnb > li i {
   display: inline-block;
@@ -512,10 +533,6 @@ a {
   font-size: 0.85em;
 }
 
-.join_btn {
-  padding: 8px;
-}
-
 #hd_menu {
   position: relative;
   background: #fff;
@@ -530,7 +547,7 @@ a {
 }
 #hd_menu button#menu_open {
   float: left;
-  width: 100px;
+  width: 120px;
   height: 50px;
   border: 0;
 
@@ -574,10 +591,20 @@ a {
 }
 
 /*사이드 메뉴*/
+.today_view {
+  position: absolute;
+  top: 420px;
+  right: 20px;
+  width: 210px;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #ececec;
+}
+
 #side_menu {
-  height: 100%;
+  height: 30%;
   position: fixed;
-  top: 0;
+  top: 150px;
   right: 0;
   background: #fff;
   border-left: 1px solid #e5e7ea;
@@ -827,59 +854,66 @@ a {
   float: left;
   width: 1200px;
 }
-.tabnav {
-  font-size: 0;
-  width: 100%;
+.tab-menu .tabnav {
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
 }
-.tabnav li {
-  display: inline-block;
-  width: 32.5%;
-  height: 46px;
-  text-align: center;
-  border: 1px solid #ececec;
+.tab-menu .tabnav a {
+  font-weight: 400;
 }
-.tabnav li a:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0px;
-  width: 100%;
-  height: 3px;
+.tab-menu .tabnav li {
 }
-.tabnav li a.active:before {
-  background: #5c2e7e;
-  border-top: none;
-}
+
 .tabnav li a.active {
+  font-weight: 600;
 }
-.tabnav li a {
-  position: relative;
-  display: block;
-  background: #f8f8f8;
-  color: #000;
-  padding: 0 30px;
-  line-height: 46px;
-  text-decoration: none;
-  font-size: 16px;
+.tabnav li:after {
 }
-.tabnav li a:hover,
-.tabnav li a.active {
+
+.tabcontent {
+  padding-top: 30px;
+  height: 350px;
+}
+
+/* 최신상품 탭메뉴 */
+.tab-menu .tabnav-new {
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.tab-menu .tabnav-new a {
+  font-weight: 400;
+}
+.tab-menu .tabnav-new li {
+}
+
+.tabnav-new li a:hover,
+.tabnav-new li a.active {
+  font-weight: 600;
   background: #fff;
   color: #000;
 }
-.tabcontent {
-  padding-top: 15px;
+.tabcontent-new {
+  padding-top: 30px;
+  height: 350px;
 }
 
 #product_Item {
   width: 1200px;
   margin: 0 auto;
   text-align: center;
-  margin-top: 60px;
+  padding-top: 60px;
+}
+
+.img_bg {
 }
 
 /* #wrapper {z-index:5;margin:0 auto;width:1200px;position:relative} */
 #wrapper {
+  background: #ffffff;
   z-index: 5;
   position: relative;
   width: 100%;
@@ -955,6 +989,7 @@ a {
   margin: 0 auto;
   width: 100%;
   min-height: 500px;
+
   height: auto !important;
 }
 #container:after {
@@ -963,9 +998,19 @@ a {
   clear: both;
   content: "";
 }
-#container .shop-content {
+#idx_banner {
+}
+
+.shop-content {
+  width: 1200px;
+  margin: auto;
   position: relative;
   padding: 1px 0;
+}
+.is_index {
+  width: 100%;
+  margin: auto;
+  position: relative;
 }
 
 .shop-content #bo_v {
@@ -973,6 +1018,7 @@ a {
 }
 
 #idx_hit {
+  position: relative;
   overflow: hidden;
 }
 #idx_hit:after {
@@ -1002,15 +1048,78 @@ a {
   background: url("../img/btn_idx_right.png") no-repeat;
 }
 
+.sct_10 .sct_cart {
+  /* display: none; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: 0;
+  width: 100%;
+  padding: 15px 0;
+  background: #000;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+}
+.product-more-wrapper {
+  margin-top: 20px;
+  width: 1200px;
+  margin-bottom: 20px;
+}
+.prouct-more {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.tab-title {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.tab-title .title {
+  font-size: 28px;
+  font-weight: 600;
+}
+.tab-title .more {
+  font-size: 15px;
+}
+
+.tab-title .more:hover {
+  font-weight: 600;
+}
+
+.tab-title .more:hover i {
+  font-weight: 600;
+}
+
+.tab-title .more i {
+  font-weight: 300;
+
+  padding-right: 5px;
+}
+
+.tab-menu {
+  display: flex;
+  font-size: 18px;
+  gap: 40px;
+}
+.tab-menu .selected {
+  font-weight: 600;
+}
 .sale_prd h2 {
   text-align: center;
   font-size: 1.7em;
-  margin: 0 0 10px 0;
   display: inline-block;
   padding: 0 0 7px;
-  border-bottom: 2px solid #000;
   line-height: 1em;
 }
+
 .st_bg {
   display: inline-block;
   width: 1px;
@@ -1050,12 +1159,6 @@ a {
   overflow: hidden;
 }
 #ft_wr {
-  max-width: 1240px;
-  margin: 0;
-  padding: 40px 0;
-  position: relative;
-  display: inline-block;
-  text-align: left;
 }
 #ft_wr:after {
   display: block;
@@ -1269,7 +1372,6 @@ a {
 
 /* 글쓰기 및 글보기 */
 .is_community .chk_box input[type="checkbox"] + label span {
-  top: 2px;
   left: 0;
 }
 .is_community .bo_fx {
@@ -1866,6 +1968,7 @@ a.btn_admin:hover {
 
 .tbl_head03 {
   margin: 0 0 10px;
+  text-align: center;
 }
 .tbl_head03 table {
   border-bottom: 1px solid #d3d3d3;
@@ -1887,6 +1990,7 @@ a.btn_admin:hover {
 }
 .tbl_head03 thead a {
   color: #383838;
+  font-size: 16px;
 }
 .tbl_head03 thead th input {
   vertical-align: top;
@@ -1916,6 +2020,10 @@ a.btn_admin:hover {
 .tbl_head03 td:first-child {
   border-left: 0;
 }
+.tbl_head03 tbody .orderinquiry_sub_tr {
+  cursor: pointer;
+}
+
 .tbl_head03 a {
 }
 
@@ -1962,7 +2070,7 @@ a.btn_admin:hover {
 
 .full_input,
 .frm_address {
-  width: 100%;
+  width: 49.5%;
 }
 .half_input {
   width: 49.5%;
@@ -2652,6 +2760,10 @@ textarea.required {
   color: #3a8afd;
 }
 
+#smb_my_ov .smb_me i {
+  margin-right: 5px;
+}
+
 #smb_private:after {
   display: block;
   visibility: hidden;
@@ -2687,6 +2799,7 @@ textarea.required {
 }
 #smb_private a:hover strong {
   background: #4b8bff;
+  color: white;
 }
 #smb_private li a:hover {
   color: #4b8bff;
@@ -3026,9 +3139,9 @@ textarea.required {
   clear: both;
   content: "";
 }
-#sod_bsk #sod_bsk_tot li {
+#sod_bsk #sod_bsk_tot ul li {
   float: left;
-  width: 33.333%;
+  width: 50%;
   background: #4a505a;
   color: #fff;
   border-left: 1px solid #212a37;
@@ -3044,7 +3157,7 @@ textarea.required {
   float: left;
 }
 #sod_bsk #sod_bsk_tot .sod_bsk_cnt {
-  width: 33.335%;
+  width: 50%;
   background: #212a37;
 }
 #sod_bsk_act {
@@ -4760,7 +4873,6 @@ textarea.required {
 #sod_fin_list .td_prd {
   border-left: 0;
   position: relative;
-  padding-left: 90px;
   min-height: 100px;
 }
 #sod_fin_list .sod_img {
@@ -6006,7 +6118,6 @@ html.no-overflowscrolling #od_coupon_frm {
 }
 .chk_box input[type="radio"] + label span {
   position: absolute;
-  top: 0;
   left: 0;
   width: 15px;
   height: 15px;
@@ -6027,4 +6138,8 @@ html.no-overflowscrolling #od_coupon_frm {
   top: 3px;
   left: 3px;
   border-radius: 50%;
+}
+
+.search_button i {
+  cursor: pointer;
 }

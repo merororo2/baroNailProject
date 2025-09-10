@@ -210,47 +210,63 @@ function get_max_value($arr)
 
             <div id="sidx_take_act" class="tbl_head01 tbl_wrap">
                 <table>
-                <thead>
-                <tr>
-                    <th scope="col" class="td_mng">상태변경</th>
-                    <th scope="col">건수</th>
-                    <th scope="col">금액</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <?php
+                    <thead>
+                        <tr>
+                            <th scope="col" class="td_mng">상태변경</th>
+                            <th scope="col">건수</th>
+                            <th scope="col">금액</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <?php
                     $info = get_order_status_sum('주문');
                     ?>
-                    <th scope="row">주문 -&gt; 입금</th>
-                    <td class="td_num"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a></td>
-                    <td class="td_price"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a></td>
-                </tr>
-                <tr>
-                    <?php
+                            <th scope="row">주문 -&gt; 입금</th>
+                            <td class="td_num"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a>
+                            </td>
+                            <td class="td_price"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <?php
                     $info = get_order_status_sum('입금');
                     ?>
-                    <th scope="row">입금 -&gt; 준비</th>
-                    <td class="td_num"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a></td>
-                    <td class="td_price"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a></td>
-                </tr>
-                <tr>
-                    <?php
+                            <th scope="row">입금 -&gt; 준비</th>
+                            <td class="td_num"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a>
+                            </td>
+                            <td class="td_price"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <?php
                     $info = get_order_status_sum('준비');
                     ?>
-                    <th scope="row">준비 -&gt; 배송</th>
-                    <td class="td_num"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a></td>
-                    <td class="td_price"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a></td>
-                </tr>
-                <tr>
-                    <?php
+                            <th scope="row">준비 -&gt; 배송</th>
+                            <td class="td_num"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a>
+                            </td>
+                            <td class="td_price"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <?php
                     $info = get_order_status_sum('배송');
                     ?>
-                    <th scope="row">배송 -&gt; 완료</th>
-                    <td class="td_num"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a></td>
-                    <td class="td_price"><a href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a></td>
-                </tr>
-                </tbody>
+                            <th scope="row">배송 -&gt; 완료</th>
+                            <td class="td_num"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['count']); ?></a>
+                            </td>
+                            <td class="td_price"><a
+                                    href="<?php echo $info['href']; ?>"><?php echo number_format($info['price']); ?></a>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </section>
@@ -287,20 +303,22 @@ function get_max_value($arr)
             ?>
             <div id="sidx_stock" class="tbl_head01 tbl_wrap">
                 <table>
-                <thead>
-                <tr>
-                    <th scope="col">재고부족 상품</th>
-                    <th scope="col">재고부족 옵션</th>
-                    <th scope="col">SMS 잔여금액</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="td_num2"><a href="./itemstocklist.php"><?php echo number_format($item_noti); ?></a></td>
-                    <td class="td_num2"><a href="./optionstocklist.php"><?php echo number_format($option_noti); ?></a></td>
-                    <td class="td_price"><?php echo display_price(intval($userinfo['coin'])); ?></td>
-                </tr>
-                </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">재고부족 상품</th>
+                            <th scope="col">재고부족 옵션</th>
+                            <th scope="col">SMS 잔여금액</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td_num2"><a
+                                    href="./itemstocklist.php"><?php echo number_format($item_noti); ?></a></td>
+                            <td class="td_num2"><a
+                                    href="./optionstocklist.php"><?php echo number_format($option_noti); ?></a></td>
+                            <td class="td_price"><?php echo display_price(intval($userinfo['coin'])); ?></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </section>
@@ -313,10 +331,10 @@ function get_max_value($arr)
 
     <div id="sidx_settle" class="tbl_head01 tbl_wrap">
         <table>
-        <thead>
-        <tr>
-            <th scope="col" rowspan="2">구분</th>
-            <?php
+            <thead>
+                <tr>
+                    <th scope="col" rowspan="2">구분</th>
+                    <?php
             $term = 3;
             $info = array();
             $info_key = array();
@@ -327,20 +345,20 @@ function get_max_value($arr)
                 $day = substr($date, 5, 5).' ('.get_yoil($date).')';
                 $info_key[] = $date;
             ?>
-            <th scope="col" colspan="2"><?php echo $day; ?></th>
-            <?php } ?>
-        </tr>
-        <tr>
-            <?php
+                    <th scope="col" colspan="2"><?php echo $day; ?></th>
+                    <?php } ?>
+                </tr>
+                <tr>
+                    <?php
             for($i=0; $i<$term; $i++) {
             ?>
-            <th scope="col">건수</th>
-            <th scope="col">금액</th>
-            <?php } ?>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
+                    <th scope="col">건수</th>
+                    <th scope="col">금액</th>
+                    <?php } ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
         $case = array('신용카드', '계좌이체', '가상계좌', '무통장', '휴대폰', '포인트', '쿠폰');
         
         $val_cnt = 0;
@@ -348,22 +366,22 @@ function get_max_value($arr)
         {
             $val_cnt++;
         ?>
-        <tr>
-            <th scope="row" id="th_val_<?php echo $val_cnt; ?>" class="td_category"><?php echo $val; ?></th>
-            <?php
+                <tr>
+                    <th scope="row" id="th_val_<?php echo $val_cnt; ?>" class="td_category"><?php echo $val; ?></th>
+                    <?php
             foreach($info_key as $date)
             {
             ?>
-            <td><?php echo number_format($info[$date][$val]['count']); ?></td>
-            <td><?php echo number_format($info[$date][$val]['price']); ?></td>
-            <?php
+                    <td><?php echo number_format($info[$date][$val]['count']); ?></td>
+                    <td><?php echo number_format($info[$date][$val]['price']); ?></td>
+                    <?php
             }
             ?>
-        </tr>
-        <?php
+                </tr>
+                <?php
         }
         ?>
-        </tbody>
+            </tbody>
         </table>
     </div>
 </section>
@@ -391,7 +409,8 @@ function get_max_value($arr)
                 ?>
                 <li>
                     <span class="oneq_cate oneq_span"><?php echo get_text($row['qa_category']); ?></span>
-                    <a href="<?php echo G5_BBS_URL; ?>/qaview.php?qa_id=<?php echo $row['qa_id']; ?>" target="_blank" class="oneq_link"><?php echo conv_subject($row['qa_subject'],40); ?></a>
+                    <a href="<?php echo G5_BBS_URL; ?>/qaview.php?qa_id=<?php echo $row['qa_id']; ?>" target="_blank"
+                        class="oneq_link"><?php echo conv_subject($row['qa_subject'],40); ?></a>
                     <?php echo $name; ?>
                 </li>
                 <?php
@@ -428,7 +447,8 @@ function get_max_value($arr)
                     $name = get_sideview($row['mb_id'], get_text($row['iq_name']), $row1['mb_email'], $row1['mb_homepage']);
                 ?>
                 <li>
-                    <a href="./itemqaform.php?w=u&amp;iq_id=<?php echo $row['iq_id']; ?>" class="qna_link"><?php echo conv_subject($row['iq_subject'],40); ?></a>
+                    <a href="./itemqaform.php?w=u&amp;iq_id=<?php echo $row['iq_id']; ?>"
+                        class="qna_link"><?php echo conv_subject($row['iq_subject'],40); ?></a>
                     <?php echo $name; ?>
                 </li>
                 <?php
@@ -451,7 +471,7 @@ function get_max_value($arr)
 
         <div class="ul_01 ul_wrap">
             <ul>
-            <?php
+                <?php
             $sql = " select * from {$g5['g5_shop_item_use_table']}
                       where is_confirm = 0
                       order by is_id desc
@@ -465,10 +485,11 @@ function get_max_value($arr)
                 $name = get_sideview($row['mb_id'], get_text($row['is_name']), $row1['mb_email'], $row1['mb_homepage']);
             ?>
                 <li>
-                    <a href="./itemuseform.php?w=u&amp;is_id=<?php echo $row['is_id']; ?>" class="ps_link"><?php echo conv_subject($row['is_subject'],40); ?></a>
+                    <a href="./itemuseform.php?w=u&amp;is_id=<?php echo $row['is_id']; ?>"
+                        class="ps_link"><?php echo conv_subject($row['is_subject'],40); ?></a>
                     <?php echo $name; ?>
                 </li>
-            <?php
+                <?php
             }
             if ($i == 0) echo '<li class="empty_list">자료가 없습니다.</li>';
             ?>
@@ -487,11 +508,11 @@ $(function() {
 
     $("#sidx_graph_area div").hover(
         function() {
-            if($(this).is(":animated"))
+            if ($(this).is(":animated"))
                 return false;
 
             var title = $(this).attr("title");
-            if(title && $(this).data("title") == undefined)
+            if (title && $(this).data("title") == undefined)
                 $(this).data("title", title);
             var left = parseInt($(this).css("left")) + 10;
             var bottom = $(this).height() + 5;
@@ -503,11 +524,11 @@ $(function() {
                 .find("div")
                 .html(title)
                 .end()
-//                .css({ left: left+"px", bottom: bottom+"px" })
+                //                .css({ left: left+"px", bottom: bottom+"px" })
                 .show(200);
         },
         function() {
-            if($(this).is(":animated"))
+            if ($(this).is(":animated"))
                 return false;
 
             $(this).attr("title", $(this).data("title"));
@@ -516,8 +537,7 @@ $(function() {
     );
 });
 
-function graph_draw()
-{
+function graph_draw() {
     var g_h1 = new Array("<?php echo implode('", "', $h_val['order']); ?>");
     var g_h2 = new Array("<?php echo implode('", "', $h_val['cancel']); ?>");
     var duration = 600;
@@ -533,8 +553,12 @@ function graph_draw()
         $g1 = $(this).find(".order");
         $g2 = $(this).find(".cancel");
 
-        $g1.animate({ height: h1+"px" }, duration);
-        $g2.animate({ height: h2+"px" }, duration);
+        $g1.animate({
+            height: h1 + "px"
+        }, duration);
+        $g2.animate({
+            height: h2 + "px"
+        }, duration);
     });
 }
 </script>

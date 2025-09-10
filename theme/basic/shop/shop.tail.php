@@ -11,47 +11,95 @@ $admin = get_admin("super");
 // 사용자 화면 우측과 하단을 담당하는 페이지입니다.
 // 우측, 하단 화면을 꾸미려면 이 파일을 수정합니다.
 ?>
-        </div>  <!-- } .shop-content 끝 -->
-	</div>      <!-- } #container 끝 -->
+</div> <!-- } .shop-content 끝 -->
+</div> <!-- } #container 끝 -->
 </div>
 <!-- } 전체 콘텐츠 끝 -->
 
 <!-- 하단 시작 { -->
-<div id="ft">
-    <div id="ft_wr">
-        <ul id="ft_link" class="ft_cnt">
-            <li><a href="<?php echo get_pretty_url('content', 'company'); ?>">회사소개</a></li>
-            <li><a href="<?php echo get_pretty_url('content', 'provision'); ?>">서비스이용약관</a></li>
-            <li><a href="<?php echo get_pretty_url('content', 'privacy'); ?>">개인정보처리방침</a></li>
-            <li><a href="<?php echo get_device_change_url(); ?>">모바일버전</a></li>
-        </ul>
-        <div id="ft_company" class="ft_cnt">
-        	<h2>사이트 정보</h2>
-	        <p class="ft_info">
-		        <span><b>회사명</b> <?php echo $default['de_admin_company_name']; ?></span>
-	            <span><b>주소</b> <?php echo $default['de_admin_company_addr']; ?></span><br>
-	            <span><b>사업자 등록번호</b> <?php echo $default['de_admin_company_saupja_no']; ?></span>
-	            <span><b>대표</b> <?php echo $default['de_admin_company_owner']; ?></span>
-	            <span><b>전화</b> <?php echo $default['de_admin_company_tel']; ?></span>
-	            <span><b>팩스</b> <?php echo $default['de_admin_company_fax']; ?></span><br>
-	            <!-- <span><b>운영자</b> <?php echo $admin['mb_name']; ?></span><br> -->
-	            <span><b>통신판매업신고번호</b> <?php echo $default['de_admin_tongsin_no']; ?></span>
-	            <span><b>개인정보 보호책임자</b> <?php echo $default['de_admin_info_name']; ?></span><br>
-				<?php if ($default['de_admin_buga_no']) echo '<span><b>부가통신사업신고번호</b> '.$default['de_admin_buga_no'].'</span>'; ?>
-			</p>
-	    </div>
-	    
-	    <!-- 커뮤니티 최신글 시작 { -->
-        <section id="sidx_lat">
-            <?php echo latest('theme/notice', 'notice', 5, 30); ?>
-        </section>
-        <!-- } 커뮤니티 최신글 끝 -->
+<footer>
+    <div class="footer-inner">
+        <div class="communication footer-border footer-list">
+            <div class="contact">
+                <p>고객센터(981-7885)</p>
+                <p>카카오톡 상담(@baronail)</p>
+            </div>
+            <div class="contact-icons">
+                <i class="contact-icon fa-brands fa-facebook"></i><i class="contact-icon fa-brands fa-youtube"></i><i
+                    class="contact-icon fa-solid fa-n"></i>
+            </div>
+        </div>
+        <div class="footer-border footer-dropdown-list">
+            <div class="footer-dropdown-list-title">
+                <p>주문</p>
+                <span class="open-button"><i class="fa-solid fa-chevron-up"></i></span>
+            </div>
+            <div class="footer-dropdown">
+                <ul class="footer-ul">
+                    <li>
+                        <a href="<?php echo G5_SHOP_URL?>/orderinquiry.php">주문내역</a>
+                    </li>
+                    <li> <a href="<?php echo G5_SHOP_URL?>/cart.php" class="cart">장바구니</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-		<?php echo visit('theme/shop_basic'); // 접속자 ?>
+        <div class="footer-border footer-dropdown-list">
+            <div class="footer-dropdown-list-title">
+                <p>회원</p>
+                <span class="open-button"><i class="fa-solid fa-chevron-up"></i></span>
+            </div>
+            <div class="footer-dropdown">
+                <ul class="footer-ul">
+                    <li>
+                        <a href="<?php echo G5_SHOP_URL ?>/mypage.php" class="mypage">마이페이지</a>
+                    </li>
+                    <li><a href="<?php echo G5_SHOP_URL ?>/coupon.php" target="_blank" class="win_coupon">
+                            쿠폰</a></li>
+                    <li> <a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php"
+                            class="smb_info">정보수정</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-border footer-dropdown-list">
+            <div class="footer-dropdown-list-title">
+                <p>서비스</p>
+                <span class="open-button"><i class="fa-solid fa-chevron-up"></i></span>
+            </div>
+            <div class="footer-dropdown">
+                <ul class="footer-ul">
+                    <li> <a href="<?php echo G5_BBS_URL ?>/faq.php">FAQ</a>
+                    </li>
+                    <li> <a href="<?php echo G5_BBS_URL ?>/qalist.php">1:1문의</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-border footer-company">
+            <ul class="footer-company-list">
+                <li><b>회사명</b> <?php echo $default['de_admin_company_name']; ?></li>
+                <li><b>주소</b> <?php echo $default['de_admin_company_addr']; ?></li>
+                <li><b>사업자 등록번호</b> <?php echo $default['de_admin_company_saupja_no']; ?></li>
+                <li><b>대표</b> <?php echo $default['de_admin_company_owner']; ?></li>
+                <li><b>전화</b> <?php echo $default['de_admin_company_tel']; ?></li>
+                <!-- <li><b>팩스</b> <?php echo $default['de_admin_company_fax']; ?></li> -->
+                <!-- <span><b>운영자</b> <?php echo $admin['mb_name']; ?></span><br> -->
+                <li><b>통신판매업신고번호</b> <?php echo $default['de_admin_tongsin_no']; ?></li>
+                <li><b>개인정보 보호책임자</b> <?php echo $default['de_admin_info_name']; ?></li>
+                <?php if ($default['de_admin_buga_no']) echo '<li><b>부가통신사업신고번호</b> '.$default['de_admin_buga_no'].'</li>'; ?>
+            </ul>
+        </div>
+        <div class="footer-border footer-list footer-info">
+            <a class="footer-info-basic" href="<?php echo get_pretty_url('content', 'company'); ?>">회사소개</a>
+            <a class="footer-info-basic" href="<?php echo get_pretty_url('content', 'provision'); ?>">서비스이용약관</a>
+            <a class="footer-info-privacy" href="<?php echo get_pretty_url('content', 'privacy'); ?>">개인정보처리방침</a>
+            <!-- <p>공지</p> -->
+        </div>
     </div>
-
-    <div id="ft_copy">Copyright &copy; 2001-2013 <?php echo $default['de_admin_company_name']; ?>. All Rights Reserved.</div>
-</div>
+</footer>
 
 <?php
 $sec = get_microtime() - $begin_time;
@@ -61,6 +109,22 @@ if ($config['cf_analytics']) {
     echo $config['cf_analytics'];
 }
 ?>
+<script>
+var open_button = document.getElementsByClassName("open-button");
+
+var drop_down_title = document.getElementsByClassName(
+    "footer-dropdown-list-title"
+);
+var footer_dropdown = document.getElementsByClassName("footer-dropdown");
+for (let i = 0; i < drop_down_title.length; i++) {
+    const element = drop_down_title[i];
+    element.addEventListener("click", function(e) {
+        e.preventDefault();
+        footer_dropdown[i].classList.toggle("open");
+        open_button[i].classList.toggle("open");
+    });
+}
+</script>
 
 <script src="<?php echo G5_JS_URL; ?>/sns.js"></script>
 <!-- } 하단 끝 -->

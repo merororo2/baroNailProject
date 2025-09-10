@@ -3,6 +3,8 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.G5_SHOP_SKIN_URL.'/style.css">', 0);
+add_javascript('<script src="'.G5_THEME_JS_URL.'/theme.shop.list.js"></script>', 10);
+
 ?>
 
 <!-- 상품진열 10 시작 { -->
@@ -55,12 +57,13 @@ foreach((array) $list as $row){
             echo '<span class="shop_icon_soldout h160"><span class="soldout_txt">SOLD OUT</span></span>';
         }
     }
-
     echo "</div>\n";
+
 
     if ($this->view_it_id) {
         echo "<div class=\"sct_id\">&lt;".stripslashes($row['it_id'])."&gt;</div>\n";
     }
+	// echo "<span class=\"sct_rank\"><span class=\"sct_rank_{$i}\">{$i}위 상품</span></span>\n";
 	
 	// 사용후기 평점표시
 	if ($this->view_star && $star_score) {
@@ -92,6 +95,8 @@ foreach((array) $list as $row){
     }
 
     echo "</li>\n";
+
+    
 }
 
 if ($i >= 1) echo "</ul>\n";

@@ -1,6 +1,7 @@
 <?php
 include_once('./_common.php');
 
+
 if (!$is_member)
     alert('회원 전용 서비스 입니다.', G5_BBS_URL.'/login.php?url='.urlencode($url));
 
@@ -58,4 +59,8 @@ else
     }
 }
 
-goto_url('./wishlist.php');
+if ($w == "d") {
+    goto_url('./wishlist.php');
+} else {
+    alert('위시리스트에 등록되었습니다.', G5_SHOP_URL.'/item.php?it_id='.$it_id);
+}

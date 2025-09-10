@@ -61,17 +61,12 @@ if (get_cookie('ck_it_id') != $it_id) {
 }
 
 // 이전 상품보기
-$sql = " select it_id, it_name from {$g5['g5_shop_item_table']}
-          where it_id > '$it_id'
-            and SUBSTRING(ca_id,1,4) = '".substr($it['ca_id'],0,4)."'
-            and it_use = '1'
-          order by it_id asc
-          limit 1 ";
+$sql = " select it_id, it_name from {$g5['g5_shop_item_table']} where it_id > '$it_id' and SUBSTRING(ca_id,1,4) = '".substr($it['ca_id'],0,4)."' and it_use = '1' order by it_id asc limit 1 ";
 $row = sql_fetch($sql);
 if (isset($row['it_id']) && $row['it_id']) {
-    $prev_title = '이전상품 <span>'.$row['it_name'].'</span>';
-    $prev_href = '<a href="'.shop_item_url($row['it_id']).'" id="siblings_prev">';
-    $prev_href2 = '</a>';
+    $prev_title = '이전상품<span class="sound_only"> '.$row['it_name'].'</span>';
+    $prev_href = '<a href="'.get_pretty_url('shop', $row['it_id']).'" id="siblings_prev">';
+    $prev_href2 = '</a>'.PHP_EOL;
 } else {
     $prev_title = '';
     $prev_href = '';
@@ -79,23 +74,17 @@ if (isset($row['it_id']) && $row['it_id']) {
 }
 
 // 다음 상품보기
-$sql = " select it_id, it_name from {$g5['g5_shop_item_table']}
-          where it_id < '$it_id'
-            and SUBSTRING(ca_id,1,4) = '".substr($it['ca_id'],0,4)."'
-            and it_use = '1'
-          order by it_id desc
-          limit 1 ";
+$sql = " select it_id, it_name from {$g5['g5_shop_item_table']} where it_id < '$it_id' and SUBSTRING(ca_id,1,4) = '".substr($it['ca_id'],0,4)."' and it_use = '1' order by it_id desc limit 1 ";
 $row = sql_fetch($sql);
 if (isset($row['it_id']) && $row['it_id']) {
-    $next_title = '다음상품 <span>'.$row['it_name'].'</span>';
-    $next_href = '<a href="'.shop_item_url($row['it_id']).'" id="siblings_next">';
-    $next_href2 = '</a>';
+    $next_title = '다음 상품<span class="sound_only"> '.$row['it_name'].'</span>';
+    $next_href = '<a href="'.get_pretty_url('shop', $row['it_id']).'" id="siblings_next">';
+    $next_href2 = '</a>'.PHP_EOL;
 } else {
     $next_title = '';
     $next_href = '';
     $next_href2 = '';
 }
-
 // 관리자가 확인한 사용후기의 개수를 얻음
 $sql = " select count(*) as cnt from `{$g5['g5_shop_item_use_table']}` where it_id = '{$it_id}' and is_confirm = '1' ";
 $row = sql_fetch($sql);

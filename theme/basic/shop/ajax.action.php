@@ -274,35 +274,35 @@ switch ($action) {
 
         ob_start();
         ?>
-        <div class="sct_cartop_wr">
-            <form name="fcart" method="post" action="<?php echo $action_url; ?>">
-            <input type="hidden" name="action" value="cart_update">
-            <input type="hidden" name="it_id[]" value="<?php echo $it['it_id']; ?>">
-            <input type="hidden" name="it_name[]" value="<?php echo stripslashes($it['it_name']); ?>">
-            <input type="hidden" name="it_price[]" value="<?php echo get_price($it); ?>">
-            <input type="hidden" name="it_stock[]" value="<?php echo get_it_stock_qty($it['it_id']); ?>">
-            <input type="hidden" name="io_type[<?php echo $it['it_id']; ?>][]" value="0">
-            <input type="hidden" name="io_id[<?php echo $it['it_id']; ?>][]" value="">
-            <input type="hidden" name="io_value[<?php echo $it['it_id']; ?>][]" value="">
-            <input type="hidden" name="io_price[<?php echo $it['it_id']; ?>][]" value="">
-            <input type="hidden" name="ct_qty[<?php echo $it['it_id']; ?>][]" value="<?php echo $item_ct_qty; ?>">
-            <input type="hidden" name="sw_direct" value="0">
-                <?php
+<div class="sct_cartop_wr">
+    <form name="fcart" method="post" action="<?php echo $action_url; ?>">
+        <input type="hidden" name="action" value="cart_update">
+        <input type="hidden" name="it_id[]" value="<?php echo $it['it_id']; ?>">
+        <input type="hidden" name="it_name[]" value="<?php echo stripslashes($it['it_name']); ?>">
+        <input type="hidden" name="it_price[]" value="<?php echo get_price($it); ?>">
+        <input type="hidden" name="it_stock[]" value="<?php echo get_it_stock_qty($it['it_id']); ?>">
+        <input type="hidden" name="io_type[<?php echo $it['it_id']; ?>][]" value="0">
+        <input type="hidden" name="io_id[<?php echo $it['it_id']; ?>][]" value="">
+        <input type="hidden" name="io_value[<?php echo $it['it_id']; ?>][]" value="">
+        <input type="hidden" name="io_price[<?php echo $it['it_id']; ?>][]" value="">
+        <input type="hidden" name="ct_qty[<?php echo $it['it_id']; ?>][]" value="<?php echo $item_ct_qty; ?>">
+        <input type="hidden" name="sw_direct" value="0">
+        <?php
                 if($option_item) {
                     $is_option = 1;
                 ?>
 
-                <?php // 선택옵션
+        <?php // 선택옵션
                     echo $option_item;
                 ?>
 
-                <button type="button" class="cartopt_cart_btn">장바구니 담기</button>
-                <button type="button" class="cartopt_close_btn">닫기</button>
+        <button type="button" class="cartopt_cart_btn">장바구니 담기</button>
+        <button type="button" class="cartopt_close_btn">닫기</button>
 
-                <?php } ?>
-            </form>
-        </div>
-        <?php
+        <?php } ?>
+    </form>
+</div>
+<?php
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -345,7 +345,11 @@ switch ($action) {
 
             die('OK');
         } else {
-            die('위시리스트에 이미 등록된 상품입니다.');
+            $sql = " delete from {$g5['g5_shop_wish_table']}
+            where wi_id = '{$row['wi_id']}'
+              and mb_id = '{$member['mb_id']}' ";
+             sql_query($sql);
+             die('찜목록 삭제하였습니다.');
         }
 
         break;

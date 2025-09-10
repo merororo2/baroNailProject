@@ -157,4 +157,18 @@ sql_query($sql);
 if ($od['od_receipt_point'] > 0)
     insert_point($member['mb_id'], $od['od_receipt_point'], "주문번호 $od_id 본인 취소");
 
+
+// 주문취소 회원의 쿠폰을 되돌려 줌
+if ($od['od_coupon'] > 0)
+    sql_query(" delete from {$g5['g5_shop_coupon_log_table']} where od_id = '{$od_id}' ");
+
+
+    $re_od = sql_fetch(" select count(*) as cnt from {$g5['g5_shop_coupon_log_table']} where od_id = '$od_id' and mb_id = '{$member['mb_id']}' ");
+
+    if($re_od['cnt']) {
+    
+        sql_query(" delete from {$g5['g5_shop_coupon_log_table']} where od_id = '{$od_id}' "); 
+    
+    }
+
 goto_url(G5_SHOP_URL."/orderinquiryview.php?od_id=$od_id&amp;uid=$uid");

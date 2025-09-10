@@ -72,21 +72,22 @@ if ($i > 0) {
 ?>
 
 <script>
-jQuery(function($){
+jQuery(function($) {
 
-    function owl_show_page(event){
+    function owl_show_page(event) {
 
         if (event.item) {
             var count = event.item.count,
                 item_index = event.item.index,
                 index = 1;
 
-            if( is_loop ){
-                index = ( 1 + ( event.property.value - Math.ceil( event.item.count / 2 ) ) % event.item.count || 0 ) || 1;
+            if (is_loop) {
+                index = (1 + (event.property.value - Math.ceil(event.item.count / 2)) % event.item.count ||
+                    0) || 1;
             } else {
-                index = event.item.index ? event.item.index + 1 : 1;
+                index = event.item.index + 1;
             }
-            
+
             $(event.target).next(".btn_wr").find(".slide-index").text(index);
         }
     }
@@ -94,38 +95,38 @@ jQuery(function($){
     var is_loop = true,
         item_totals = $('.main_banner_owl .item').length;
 
-    if( item_totals ){
+    if (item_totals) {
         $('#slide-counter').prepend('<strong class="slide-index current-index"></strong> / ')
-        .append('<span class="total-slides">'+item_totals+'</span>');
+            .append('<span class="total-slides">' + item_totals + '</span>');
     }
 
     var owl = $('.main_banner_owl').owlCarousel({
-        items:1,
-        loop:is_loop,
-        margin:0,
-        nav:false,
-        autoHeight:true,
-        autoplay:true,
-        autoplayTimeout:5000,   // 5000은 5초
-        autoplayHoverPause:true,
+        items: 1,
+        loop: is_loop,
+        margin: 0,
+        nav: false,
+        autoHeight: true,
+        autoplay: true,
+        autoplayTimeout: 5000, // 5000은 5초
+        autoplayHoverPause: true,
         dotsContainer: '.carousel-custom-dots',
-        onChanged:function(event){
+        onChanged: function(event) {
             owl_show_page(event);
         },
     });
 
     // Custom Navigation Events
-    $(document).on("click", ".carousel-custom-dots a", function(e){
+    $(document).on("click", ".carousel-custom-dots a", function(e) {
         e.preventDefault();
         owl.trigger('to.owl.carousel', [$(this).parent().index(), 300]);
     });
 
-    $(document).on("click", ".btn_wr .pager-next", function(e){
+    $(document).on("click", ".btn_wr .pager-next", function(e) {
         e.preventDefault();
         owl.trigger('next.owl.carousel');
     });
 
-    $(document).on("click", ".btn_wr .pager-prev", function(e){
+    $(document).on("click", ".btn_wr .pager-prev", function(e) {
         e.preventDefault();
         owl.trigger('prev.owl.carousel');
     });

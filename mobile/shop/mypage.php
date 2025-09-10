@@ -16,6 +16,11 @@ include_once(G5_MSHOP_PATH.'/_head.php');
 
 // 쿠폰
 $cp_count = get_shop_member_coupon_count($member['mb_id'], true);
+
+//주문건
+$sql = " select count(*) as cnt from {$g5['g5_shop_order_table']} where mb_id = '{$member['mb_id']}' ";
+$row = sql_fetch($sql);
+$item_order_count = $row['cnt'];
 ?>
 
 <div id="smb_my">
@@ -23,22 +28,31 @@ $cp_count = get_shop_member_coupon_count($member['mb_id'], true);
     <section id="smb_my_ov">
         <h2>회원정보 개요</h2>
         <div class="my_name">
-            <?php echo get_member_profile_img($member['mb_id']); ?> <strong><?php echo $member['mb_id'] ? $member['mb_name'] : '비회원'; ?></strong>님
+
+            <strong><?php echo $member['mb_id'] ? $member['mb_name'] : '비회원'; ?></strong>님 반갑습니다
             <ul class="smb_my_act">
-                <?php if ($is_admin == 'super') { ?><li><a href="<?php echo G5_ADMIN_URL; ?>/" class="btn_admin">관리자</a></li><?php } ?>
-                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=register_form.php" class="btn01">정보수정</a></li>
-                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=member_leave.php" onclick="return member_leave();" class="btn01">회원탈퇴</a></li>
+                <?php if ($is_admin == 'super') { ?><li><a href="<?php echo G5_ADMIN_URL; ?>/" class="btn_admin">관리자</a>
+                </li><?php } ?>
+                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=register_form.php" class="btn01">정보수정</a>
+                </li>
+                <li><a href="<?php echo G5_BBS_URL; ?>/member_confirm.php?url=member_leave.php"
+                        onclick="return member_leave();" class="btn01">회원탈퇴</a></li>
             </ul>
         </div>
         <ul class="my_pocou">
-            <li  class="my_cou">
+            <li class="my_cou">
                 보유쿠폰
-                <a href="<?php echo G5_SHOP_URL; ?>/coupon.php" target="_blank" class="win_coupon"><?php echo number_format($cp_count); ?></a>
+                <a href="<?php echo G5_SHOP_URL; ?>/coupon.php" target="_blank"
+                    class="win_coupon"><?php echo number_format($cp_count); ?></a>
             </li>
-            <li class="my_point">
-                보유포인트
-                <a href="<?php echo G5_BBS_URL; ?>/point.php" target="_blank" class="win_point"><?php echo number_format($member['mb_point']); ?>점</a>
+            <li>
+                주문 / 취소,반품,환불 내역
+                <a href="<?php echo G5_SHOP_URL; ?>/orderinquiry.php"> <?php
+                    echo $item_order_count ;
+                ?></a>
+
             </li>
+
         </ul>
         <div class="my_info">
             <div class="my_info_wr">
@@ -52,27 +66,23 @@ $cp_count = get_shop_member_coupon_count($member['mb_id'], true);
             <div class="my_info_wr">
                 <strong>최종접속일시</strong>
                 <span><?php echo $member['mb_today_login']; ?></span>
-             </div>
+            </div>
             <div class="my_info_wr">
-            <strong>회원가입일시</strong>
+                <strong>회원가입일시</strong>
                 <span><?php echo $member['mb_datetime']; ?></span>
             </div>
-            <div class="my_info_wr ov_addr">
-                <strong>주소</strong>
-                <span><?php echo sprintf("(%s%s)", $member['mb_zip1'], $member['mb_zip2']).' '.print_address($member['mb_addr1'], $member['mb_addr2'], $member['mb_addr3'], $member['mb_addr_jibeon']); ?></span>
-            </div>
+
         </div>
-        <div class="my_ov_btn"><button type="button" class="btn_op_area"><i class="fa fa-caret-down" aria-hidden="true"></i><span class="sound_only">상세정보 보기</span></button></div>
+        <div class="my_ov_btn"><button type="button" class="btn_op_area">상세정보 보기<i class="fa fa-caret-down"
+                    aria-hidden="true"></i><span class="sound_only">상세정보 보기</span></button></div>
 
     </section>
 
     <script>
-    
-        $(".btn_op_area").on("click", function() {
-            $(".my_info").toggle();
-            $(".fa-caret-down").toggleClass("fa-caret-up")
-        });
-
+    $(".btn_op_area").on("click", function() {
+        $(".my_info").toggle();
+        $(".fa-caret-down").toggleClass("fa-caret-up")
+    });
     </script>
 
     <section id="smb_my_od">
@@ -111,8 +121,9 @@ $cp_count = get_shop_member_coupon_count($member['mb_id'], true);
             <li>
                 <div class="wish_img"><?php echo $image; ?></div>
                 <div class="wish_info">
-                    <a href="<?php echo get_shop_item($row['it_id'], true); ?>" class="info_link"><?php echo stripslashes($row['it_name']); ?></a>
-                     <span class="info_date"><?php echo substr($row['wi_time'], 2, 8); ?></span>
+                    <a href="<?php echo get_shop_item($row['it_id'], true); ?>"
+                        class="info_link"><?php echo stripslashes($row['it_name']); ?></a>
+                    <span class="info_date"><?php echo substr($row['wi_time'], 2, 8); ?></span>
                 </div>
             </li>
 
@@ -123,14 +134,13 @@ $cp_count = get_shop_member_coupon_count($member['mb_id'], true);
                 echo '<li class="empty_list">보관 내역이 없습니다.</li>';
             ?>
         </ul>
-         <a href="<?php echo G5_SHOP_URL; ?>/wishlist.php" class="btn_more">더보기</a>
+        <a href="<?php echo G5_SHOP_URL; ?>/wishlist.php" class="btn_more">더보기</a>
     </section>
 
 </div>
 
 <script>
-function member_leave()
-{
+function member_leave() {
     return confirm('정말 회원에서 탈퇴 하시겠습니까?')
 }
 </script>

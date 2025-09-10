@@ -111,18 +111,18 @@ foreach((array) $list as $row){
 
 if ($i >= 1) echo "</ul>\n";
 
-if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\n";
+if($i == 0) echo "<div class=\"sct_noitem\">등록된 상품이 없습니다.</div>\n";
 ?>
 <!-- } 상품진열 30 끝 -->
 
 <script>
 //SNS 공유
-$(function (){
-	$(".btn_share").on("click", function() {
-		$(this).parent("div").children(".sct_sns_wrap").show();
-	});
-    $('.sct_sns_bg, .sct_sns_cls').click(function(){
+$(function() {
+    $(".btn_share").on("click", function() {
+        $(this).parent("div").children(".sct_sns_wrap").show();
+    });
+    $('.sct_sns_bg, .sct_sns_cls').click(function() {
         $('.sct_sns_wrap').hide();
-	});
-});			
+    });
+});
 </script>

@@ -611,8 +611,10 @@ if ($w == '') {
         <script>
         alert("회원 정보가 수정 되었습니다.");
         document.fregisterupdate.submit();
-        </script>
-        </body>
-        </html>';
-    }
+
+</script>
+</body>
+
+</html>';
+}
 }

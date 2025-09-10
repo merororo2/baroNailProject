@@ -153,12 +153,12 @@ if ($i === 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p
 
 <script>
 //SNS 공유
-$(function (){
-	$(".btn_share").on("click", function() {
-		$(this).parent("div").children(".sct_sns_wrap").show();
-	});
-    $('.sct_sns_bg, .sct_sns_cls').click(function(){
+$(function() {
+    $(".btn_share").on("click", function() {
+        $(this).parent("div").children(".sct_sns_wrap").show();
+    });
+    $('.sct_sns_bg, .sct_sns_cls').click(function() {
         $('.sct_sns_wrap').hide();
-	});
-});			
+    });
+});
 </script>

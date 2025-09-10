@@ -69,7 +69,9 @@
 
 /* aside:gnb */
 #gnb {
-  position: relative;
+  position: sticky;
+  top: 0;
+  font-size: 16px;
 }
 
 #gnb h2 {
@@ -124,9 +126,17 @@
 }
 .gnb_1dli_on .gnb_1da {
   position: relative;
-  background-color: #f9fafb;
-  color: #ff0837;
+  color: #000;
   text-decoration: none;
+}
+.gnb_1dli_on .gnb_1da::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 65px;
+  width: 100%;
+  height: 2px;
+  background: #f33;
 }
 .gnb_1dli_on .gnb_1dam {
   text-decoration: none;
@@ -160,9 +170,43 @@
 }
 
 /* 오늘 본 상품 */
-#stv {
-  position: relative;
+.boxtodayview_wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
   height: 100%;
+}
+.get_itemwish i {
+  color: red;
+}
+#stv {
+  position: sticky;
+  width: 200px;
+  top: 495px;
+  right: 10px;
+  background-color: #fff;
+  border: 1px solid #ececec;
+}
+#stv .s_h2 {
+  font-size: 1.3em;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ececec;
+}
+#stv .get_today_item_count {
+  position: absolute;
+  top: 10px;
+  right: 26px;
+  z-index: 3;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  background-color: red;
+  color: white;
+  font-size: 5px;
+  border-radius: 15px;
+  display: inline-block;
 }
 #stv .li_empty {
   text-align: center;
@@ -170,10 +214,10 @@
 }
 #stv_pg {
   display: block;
-  position: fixed;
+  position: relative;
   right: 0;
-  bottom: 0;
-  width: 229px;
+  bottom: 20px;
+  width: auto;
   text-align: center;
   margin: 10px 0 0;
   padding: 15px;
@@ -184,7 +228,7 @@
   display: none;
   padding: 15px;
   word-break: break-all;
-  border-bottom: 1px solid #f6f6f6;
+  border-bottom: 1px solid #ececec;
 }
 .stv_item:after {
   display: block;
@@ -211,16 +255,15 @@
 }
 
 #stv_btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 60px;
-  height: 50px;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  z-index: 50;
 }
 #up {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 30px;
   background: url("img/btn_sb_prev.png") no-repeat 50% 50%;
   width: 30px;
   height: 30px;
@@ -231,7 +274,7 @@
 #down {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 30px;
   background: url("img/btn_sb_next.png") no-repeat 50% 50%;
   width: 30px;
   height: 30px;
@@ -361,7 +404,6 @@
 /* 메인배너 */
 
 #main_bn {
-  width: 1641px;
   border: 1px solid #e3e5e8;
   position: relative;
 }
@@ -577,6 +619,15 @@
 }
 
 /*위시리스트*/
+
+.product_wish {
+  float: left;
+  display: inline-block;
+  color: #8c9195;
+  font-size: 1.6em;
+  text-align: center;
+  font-weight: bold;
+}
 #wish {
 }
 #wish li {
@@ -676,8 +727,12 @@
   position: relative;
 }
 .sct_noitem {
-  padding: 100px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
   text-align: center;
+  font-size: 20px;
 }
 .sct img {
   position: relative;
@@ -1009,6 +1064,38 @@
   right: 5px;
   bottom: 0;
 }
+.smt_40 .sct_btn {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: 0;
+  width: 100%;
+  padding: 15px 0;
+  background: #000;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+}
+.smt_40 .sct_li:hover .sct_btn {
+  display: block;
+}
+.smt_40 .sct_cart {
+  /* display: none; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: 0;
+  width: 100%;
+  padding: 15px 0;
+  background: #000;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+}
+
 .sct_10 .sct_op_btn > button {
   border: 0;
   width: 25px;
@@ -1017,6 +1104,17 @@
   text-align: center;
   color: #949494;
   background: transparent;
+}
+.smt_40 .sct_rank {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.4em;
+  background: #f54947;
+  z-index: 99;
+  color: #fff;
+  padding: 5px 0;
+  width: 50%;
 }
 
 /* 상품 목록 스킨 20 */
@@ -1427,18 +1525,18 @@
 
 /* 메인 상품 목록 스킨 10 */
 .smt_10 {
-  margin: 0 -5px;
 }
 .smt_10 .sct_li {
   position: relative;
   float: left;
   width: 215px;
+  margin-left: 12px;
   margin-right: 15px;
   margin-bottom: 15px;
   text-align: left;
 }
 .smt_10 .sct_last {
-  margin-right: 0;
+  margin-right: 0px;
 }
 .smt_10 .sct_clear {
   clear: both;
@@ -1666,13 +1764,13 @@
 }
 .smt_20 .sct_ul_first {
   display: block;
+  text-align: center;
   top: 0;
 }
 .smt_20 .sct_li {
   position: relative;
   float: left;
   width: 230px;
-  margin-right: 15px;
   margin-bottom: 15px;
   text-align: left;
 }
@@ -1695,9 +1793,7 @@
   position: relative;
   text-align: center;
 }
-.smt_20 .sct_img:hover {
-  background: #000;
-}
+
 .smt_20 .sct_img a {
   display: block;
 }
@@ -1917,8 +2013,11 @@
 /* ##### main(nn).skin.php, list.(nn).skin..php 공통 적용 끝 ##### */
 
 /* 상품 목록 */
+.product_wrapper {
+  width: 1200px;
+  margin: auto;
+}
 #sct {
-  margin: 0;
 }
 .sct_admin {
   text-align: right;
@@ -2422,12 +2521,19 @@
   margin: 0 5px 0 0;
 }
 
+.btn_wish {
+  border: none;
+  font-size: 21px;
+  background: none;
+  color: #e2e2e2;
+}
+
 #sit_star_sns a {
   display: inline-block;
   vertical-align: middle;
 }
 #sit_star_sns .btn_sns_share {
-  float: left;
+  float: right;
   background: transparent;
   width: 35px;
   height: 25px;
@@ -2435,6 +2541,9 @@
   color: #4b5259;
   font-size: 1.6em;
   font-weight: bold;
+}
+.sit_btn_wish {
+  width: 120px;
 }
 #sit_star_sns .btn_sns_share:hover {
   color: #3a8afd;
@@ -2670,6 +2779,10 @@
   clear: both;
   content: "";
 }
+#sit_ov_btn {
+  display: flex;
+  width: 100%;
+}
 #sit_ov_btn button {
   width: 186px;
   float: left;
@@ -2716,7 +2829,7 @@
 .sit_btn_wish {
   float: left;
   display: inline-block;
-  width: 65px;
+  width: 30px;
   height: 50px;
   margin-bottom: 10px;
   line-height: 50px;
@@ -2765,6 +2878,10 @@
   float: left;
   padding-left: 20px;
 }
+#sit_siblings a#siblings_prev:hover {
+  color: #010101;
+  font-weight: 600;
+}
 #sit_siblings a#siblings_prev:after {
   content: "";
   background: url("img/sit_siblings.jpg") no-repeat;
@@ -2778,6 +2895,10 @@
 #sit_siblings a#siblings_next {
   float: right;
   padding-right: 20px;
+}
+#sit_siblings a#siblings_next:hover {
+  color: #010101;
+  font-weight: 600;
 }
 #sit_siblings a#siblings_next:after {
   content: "";
@@ -3299,9 +3420,7 @@
 }
 
 /* 상품 상세보기 - 상품문의 */
-#sit_qa {
-  margin: 20px 0;
-}
+
 #sit_qa h2 {
   position: absolute;
   font-size: 0;
@@ -3396,6 +3515,7 @@
 .sit_qa_con {
   display: none;
   clear: both;
+  padding-top: 10px;
 }
 .sit_qa_p {
   margin: 10px 0;
@@ -3447,7 +3567,13 @@
 
 #sit_qa_wbtn {
   text-align: right;
-  margin: 0 0 20px;
+  position: relative;
+  background: #fff;
+  border: 2px solid #efeff1;
+  margin: 0 0 15px;
+  padding: 20px 30px 15px 15px;
+  min-height: 90px;
+  vertical-align: middle;
 }
 #sit_qa_wbtn a {
   padding: 0 20px;
@@ -3859,6 +3985,7 @@
 #sqa {
   margin-bottom: 20px;
 }
+
 #sqa ol {
   margin: 0;
   padding: 0;
@@ -3887,6 +4014,10 @@
   right: 20px;
   top: 20px;
   margin-right: 0;
+}
+
+.sqa_title {
+  cursor: pointer;
 }
 
 .sqa_img {
@@ -3923,7 +4054,7 @@
   top: -2px;
 }
 .sqa_con {
-  margin: 10px 0;
+  margin: 30px 0;
   background: #f3f3f3;
   line-height: 1.5em;
 }
@@ -4118,6 +4249,17 @@
   border-left: 1px solid #ddd;
   display: block;
   padding: 0 10px;
+  height: 100%;
+}
+#ssch_sort li a.active:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  font-weight: 600;
+  background: #f33;
 }
 #ssch_sort li:hover:after {
   content: "";
@@ -4126,10 +4268,10 @@
   bottom: -1px;
   width: 100%;
   height: 2px;
-  background: #3a8afd;
+  background: #f33;
 }
 #ssch_sort li:hover a {
-  color: #3a8afd;
+  color: #000;
 }
 #ssch_sort li:first-child a {
   border: 0;
@@ -4157,6 +4299,9 @@
 #ssch_sort_all li a {
   display: block;
   padding: 0 10px;
+}
+#ssch_sort_all li a.active {
+  font-weight: 600;
 }
 #ssch_sort_all li:hover:after {
   content: "";

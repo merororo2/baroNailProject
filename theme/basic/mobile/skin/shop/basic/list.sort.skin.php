@@ -23,7 +23,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_MSHOP_SKIN_URL.'/style.css">',
     <h2>상품 정렬</h2>
     <button type="button" class="btn_sort">상품정렬 <i class="fa fa-caret-down" aria-hidden="true"></i></button>
     <ul>
-        <li><a href="<?php echo $sct_sort_href; ?>it_price&amp;sortodr=asc" >낮은가격순</a></li>
+        <li><a href="<?php echo $sct_sort_href; ?>it_price&amp;sortodr=asc">낮은가격순</a></li>
         <li><a href="<?php echo $sct_sort_href; ?>it_price&amp;sortodr=desc">높은가격순</a></li>
         <li><a href="<?php echo $sct_sort_href; ?>it_name&amp;sortodr=asc">상품명순</a></li>
     </ul>
@@ -31,12 +31,12 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_MSHOP_SKIN_URL.'/style.css">',
 <!-- } 상품 정렬 선택 끝 -->
 
 <script>
-$(".btn_sort").click(function(){
+$(".btn_sort").click(function() {
     $("#sct_sort ul").show();
 });
-$(document).mouseup(function (e){
+$(document).mouseup(function(e) {
     var container = $("#sct_sort ul");
-    if( container.has(e.target).length === 0)
-    container.hide();
+    if (container.has(e.target).length === 0)
+        container.hide();
 });
 </script>

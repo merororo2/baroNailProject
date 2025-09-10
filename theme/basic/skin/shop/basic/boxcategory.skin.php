@@ -11,7 +11,8 @@ $mshop_categories = get_shop_category_array(true);
 <nav id="gnb">
     <h2>쇼핑몰 카테고리</h2>
     <ul id="gnb_1dul">
-    <li class="gnb_1dli"><button type="button" id="menu_open"><i class="fa fa-bars" aria-hidden="true"></i> <span>카테고리</span></button></li>
+        <!-- <li class="gnb_1dli"><button type="button" id="menu_open"><i class="fa fa-bars" aria-hidden="true"></i>
+                <span>카테고리</span></button></li> -->
         <?php
         // 1단계 분류 판매 가능한 것만
         $gnb_zindex = 999; // gnb_1dli z-index 값 설정용
@@ -25,19 +26,8 @@ $mshop_categories = get_shop_category_array(true);
             $count = ((int) count($cate1)) - 1;
         ?>
         <li class="gnb_1dli" style="z-index:<?php echo $gnb_zindex; ?>">
-            <a href="<?php echo $row['url']; ?>" class="gnb_1da"><?php echo $row['ca_name']; ?><?php if ($count) echo '<i class="fa fa-angle-right" aria-hidden="true"></i>'; ?></a>
-            <?php
-            $j=0;
-            foreach($cate1 as $key=>$cate2) {
-            if( empty($cate2) || $key === 'text' ) continue;
-            
-            $row2 = $cate2['text'];
-            if ($j==0) echo '<ul class="gnb_2dul" style="z-index:'.$gnb_zindex.'">';
-            ?>
-                <li class="gnb_2dli"><a href="<?php echo $row2['url']; ?>" class="gnb_2da"><?php echo $row2['ca_name']; ?></a></li>
-            <?php $j++; }   //end for
-            if ($j>0) echo '</ul>';
-            ?>
+            <a href="<?php echo $row['url']; ?>" class="gnb_1da"><?php echo $row['ca_name']; ?></a>
+
         </li>
         <?php $i++; }   //end for ?>
     </ul>

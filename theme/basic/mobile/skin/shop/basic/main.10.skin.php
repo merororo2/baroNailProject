@@ -12,8 +12,8 @@ add_javascript('<script src="'.G5_THEME_JS_URL.'/theme.shop.list.js"></script>',
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js" async></script>
 <script src="<?php echo G5_JS_URL; ?>/kakaolink.js"></script>
 <script>
-    // 사용할 앱의 Javascript 키를 설정해 주세요.
-    Kakao.init("<?php echo $config['cf_kakao_js_apikey']; ?>");
+// 사용할 앱의 Javascript 키를 설정해 주세요.
+Kakao.init("<?php echo $config['cf_kakao_js_apikey']; ?>");
 </script>
 <?php } ?>
 
@@ -95,7 +95,7 @@ foreach((array) $list as $row){
         
     // 위시리스트 + 공유 버튼 시작 {
     echo "<div class=\"sct_op_btn\">\n";
-        echo "<button type=\"button\" class=\"btn_wish\" data-it_id=\"{$row['it_id']}\"><span class=\"sound_only\">위시리스트</span><i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i></button>\n";
+        // echo "<button type=\"button\" class=\"btn_wish\" data-it_id=\"{$row['it_id']}\"><span class=\"sound_only\">위시리스트</span><i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i></button>\n";
        if ($this->view_sns) {
            echo "<button type=\"button\" class=\"btn_share\"><span class=\"sound_only\">공유하기</span><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i></button>\n";
         }
@@ -135,12 +135,12 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
 
 <script>
 //SNS 공유
-$(function (){
-	$(".btn_share").on("click", function() {
-		$(this).parent("div").children(".sct_sns_wrap").show();
-	});
-    $('.sct_sns_bg, .sct_sns_cls').click(function(){
-	    $('.sct_sns_wrap').hide();
-	});
-});			
+$(function() {
+    $(".btn_share").on("click", function() {
+        $(this).parent("div").children(".sct_sns_wrap").show();
+    });
+    $('.sct_sns_bg, .sct_sns_cls').click(function() {
+        $('.sct_sns_wrap').hide();
+    });
+});
 </script>

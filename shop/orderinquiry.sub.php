@@ -19,19 +19,19 @@ if(defined('G5_THEME_SHOP_PATH')) {
 
 <div class="tbl_head03 tbl_wrap">
     <table>
-    <thead>
-    <tr>
-        <th scope="col">주문서번호</th>
-        <th scope="col">주문일시</th>
-        <th scope="col">상품수</th>
-        <th scope="col">주문금액</th>
-        <th scope="col">입금액</th>
-        <th scope="col">미입금액</th>
-        <th scope="col">상태</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
+        <thead>
+            <tr>
+                <th scope="col">주문서번호</th>
+                <th scope="col">주문일시</th>
+                <th scope="col">상품수</th>
+                <th scope="col">주문금액</th>
+                <th scope="col">입금액</th>
+                <th scope="col">미입금액</th>
+                <th scope="col">상태</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
     $sql = " select *
                from {$g5['g5_shop_order_table']}
               where mb_id = '{$member['mb_id']}'
@@ -63,26 +63,29 @@ if(defined('G5_THEME_SHOP_PATH')) {
                 break;
         }
     ?>
-
-    <tr>
-        <td>
-            <a href="<?php echo G5_SHOP_URL; ?>/orderinquiryview.php?od_id=<?php echo $row['od_id']; ?>&amp;uid=<?php echo $uid; ?>"><?php echo $row['od_id']; ?></a>
-        </td>
-        <td><?php echo substr($row['od_time'],2,14); ?> (<?php echo get_yoil($row['od_time']); ?>)</td>
-        <td class="td_numbig"><?php echo $row['od_cart_count']; ?></td>
-        <td class="td_numbig text_right"><?php echo display_price($row['od_cart_price'] + $row['od_send_cost'] + $row['od_send_cost2']); ?></td>
-        <td class="td_numbig text_right"><?php echo display_price($row['od_receipt_price']); ?></td>
-        <td class="td_numbig text_right"><?php echo display_price($row['od_misu']); ?></td>
-        <td><?php echo $od_status; ?></td>
-    </tr>
-
-    <?php
+            <tr class="orderinquiry_sub_tr"
+                onclick="
+                   location.href = '<?php echo G5_SHOP_URL; ?>/orderinquiryview.php?od_id=<?php echo $row['od_id']; ?>&amp;uid=<?php echo $uid; ?>';">
+                <td>
+                    <?php echo $row['od_id']; ?>
+                </td>
+                <td><?php echo substr($row['od_time'],2,14); ?> (<?php echo get_yoil($row['od_time']); ?>)</td>
+                <td class="td_numbig"><?php echo $row['od_cart_count']; ?></td>
+                <td class="td_numbig text_right">
+                    <?php echo display_price($row['od_cart_price'] + $row['od_send_cost'] + $row['od_send_cost2']); ?>
+                </td>
+                <td class="td_numbig text_right"><?php echo display_price($row['od_receipt_price']); ?></td>
+                <td class="td_numbig text_right"><?php echo display_price($row['od_misu']); ?></td>
+                <td><?php echo $od_status; ?></td>
+            </tr>
+            </a>
+            <?php
     }
 
     if ($i == 0)
         echo '<tr><td colspan="7" class="empty_table">주문 내역이 없습니다.</td></tr>';
     ?>
-    </tbody>
+        </tbody>
     </table>
 </div>
 <!-- } 주문 내역 목록 끝 -->

@@ -9,25 +9,26 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_MSHOP_SKIN_URL.'/style.css">',
 
 <!-- 전체 상품 문의 목록 시작 { -->
 <form method="get" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
-<div id="sqa_sch">
-    <div class="sch_wr">
-        <label for="sfl" class="sound_only">검색항목</label>
-        <select name="sfl" required id="sfl">
-            <option value="">선택</option>
-            <option value="b.it_name"    <?php echo get_selected($sfl, "b.it_name", true); ?>>상품명</option>
-            <option value="a.it_id"      <?php echo get_selected($sfl, "a.it_id"); ?>>상품코드</option>
-            <option value="a.iq_subject" <?php echo get_selected($sfl, "a.iq_subject"); ?>>문의제목</option>
-            <option value="a.iq_question"<?php echo get_selected($sfl, "a.iq_question"); ?>>문의내용</option>
-            <option value="a.iq_name"    <?php echo get_selected($sfl, "a.it_id"); ?>>작성자명</option>
-            <option value="a.mb_id"      <?php echo get_selected($sfl, "a.mb_id"); ?>>작성자아이디</option>
-        </select>
+    <div id="sqa_sch">
+        <div class="sch_wr">
+            <label for="sfl" class="sound_only">검색항목</label>
+            <select name="sfl" required id="sfl">
+                <option value="">선택</option>
+                <option value="b.it_name" <?php echo get_selected($sfl, "b.it_name", true); ?>>상품명</option>
+                <option value="a.it_id" <?php echo get_selected($sfl, "a.it_id"); ?>>상품코드</option>
+                <option value="a.iq_subject" <?php echo get_selected($sfl, "a.iq_subject"); ?>>문의제목</option>
+                <option value="a.iq_question" <?php echo get_selected($sfl, "a.iq_question"); ?>>문의내용</option>
+                <option value="a.iq_name" <?php echo get_selected($sfl, "a.it_id"); ?>>작성자명</option>
+                <option value="a.mb_id" <?php echo get_selected($sfl, "a.mb_id"); ?>>작성자아이디</option>
+            </select>
 
-        <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-        <input type="text" name="stx" value="<?php echo $stx; ?>" id="stx" required class="sch_input">
-        <button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+            <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+            <input type="text" name="stx" value="<?php echo $stx; ?>" id="stx" required class="sch_input">
+            <button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span
+                    class="sound_only">검색</span></button>
+        </div>
+        <a href="<?php echo $_SERVER['SCRIPT_NAME']; ?>">전체보기</a>
     </div>
-    <a href="<?php echo $_SERVER['SCRIPT_NAME']; ?>">전체보기</a>
-</div>
 </form>
 
 <div id="sqa">
@@ -82,7 +83,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_MSHOP_SKIN_URL.'/style.css">',
         </div>
 
         <section class="sqa_section">
-            <h2><span class="<?php echo $iq_style; ?>"><?php echo $iq_stats; ?></span> <?php echo $iq_subject; ?></h2>
+            <button type="button" class="sqa_button"><?php echo $iq_subject; ?></button>
             <div class="sqa_info">
                 <span class="sound_only">작성자</span>
                 <span class="sqa_if_wt"><?php echo get_text($row['iq_name']); ?></span>
@@ -90,7 +91,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_MSHOP_SKIN_URL.'/style.css">',
                 <span><?php echo substr($row['iq_time'],2,8); ?></span>
             </div>
         </section>
-  
+
         <div id="sqa_con_<?php echo $i; ?>" class="sqa_con" style="display:none;">
             <div class="sit_qa_qaq">
                 <strong class="sound_only">문의내용</strong>
@@ -99,14 +100,15 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_MSHOP_SKIN_URL.'/style.css">',
             </div>
             <?php if(!$is_secret) { ?>
             <div class="sit_qa_qaa">
-                 <strong class="sound_only">답변</strong>
+                <strong class="sound_only">답변</strong>
                 <span class="qa_alp">A</span>
                 <?php echo $iq_answer; ?>
             </div>
             <?php } ?>
         </div>
-        
-		<div class="sqa_con_btn"><button class="sqa_con_<?php echo $i; ?>"><span class="sound_only">내용보기</span><i class="fa fa-chevron-down" aria-hidden="true"></i></button></div>
+
+        <div class="sqa_con_btn"><button class="sqa_con_<?php echo $i; ?>"><span class="sound_only">내용보기</span><i
+                    class="fa fa-chevron-down" aria-hidden="true"></i></button></div>
 
     </li>
     <?php
@@ -121,13 +123,12 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_MSHOP_SKIN_URL.'/style.css">',
 <?php echo get_paging($config['cf_mobile_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 
 <script>
-$(function(){
-    // 상품문의 더보기
-    $(".sqa_con_btn button").click(function(){
-        var $con = $(this).parent().prev();
-        if($con.is(":visible")) {
+$(function() {
+
+    $(".sqa_button").click(function() {
+        var $con = $(this).parent().next();
+        if ($con.is(":visible")) {
             $con.slideUp();
-            $(this).html("<span class=\"sound_only\">내용보기</span> <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>");
         } else {
             $("div[id^=sqa_con]:visible").hide();
             $con.slideDown(
@@ -136,7 +137,29 @@ $(function(){
                     $con.viewimageresize2();
                 }
             );
-            $(this).html("<span class=\"sound_only\">내용닫기</span><i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>");
+        }
+    });
+
+    // 상품문의 더보기
+    $(".sqa_con_btn button").click(function() {
+        var $con = $(this).parent().prev();
+        console.log($con);
+        if ($con.is(":visible")) {
+            $con.slideUp();
+            $(this).html(
+                "<span class=\"sound_only\">내용보기</span> <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>"
+            );
+        } else {
+            $("div[id^=sqa_con]:visible").hide();
+            $con.slideDown(
+                function() {
+                    // 이미지 리사이즈
+                    $con.viewimageresize2();
+                }
+            );
+            $(this).html(
+                "<span class=\"sound_only\">내용닫기</span><i class=\"fa fa-chevron-up\" aria-hidden=\"true\"></i>"
+            );
         }
     });
 });

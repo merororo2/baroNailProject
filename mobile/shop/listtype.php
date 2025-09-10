@@ -20,8 +20,8 @@ $list_row   = $default['de_mobile_listtype_list_row'];   // 한 페이지에 몇
 $img_width  = $default['de_mobile_listtype_img_width'];  // 출력이미지 폭
 $img_height = $default['de_mobile_listtype_img_height']; // 출력이미지 높이
 ?>
-<div id="listtype"> 
-<?php
+<div id="listtype">
+    <?php
 // 상품 출력순서가 있다면
 $order_by = ' it_order, it_id desc ';
 if ($sort != '')
@@ -29,8 +29,10 @@ if ($sort != '')
 else
     $order_by = 'it_order, it_id desc';
 
-if (!$skin)
+    $skin = isset($skin) ? $skin : '';
+if (!$skin){
     $skin = $default['de_mobile_listtype_list_skin'];
+}
 else
     $skin = preg_replace('#\.+[\\\/]#', '', $skin);
 

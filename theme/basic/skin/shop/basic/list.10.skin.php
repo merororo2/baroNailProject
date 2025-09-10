@@ -48,7 +48,7 @@ foreach((array) $list as $row){
     }
 
     if ($this->view_it_img) {
-        echo get_it_image($row['it_id'], $this->img_width, $this->img_height, '', '', stripslashes($row['it_name']))."\n";
+        echo get_item_new_image($row['it_id'], $this->img_width, $this->img_height, stripslashes($row['it_name']))."\n";
     }
 
     if ($this->href) {
@@ -112,28 +112,16 @@ foreach((array) $list as $row){
             echo "</div>\n";
         }
         
-        // 위시리스트 + 공유 버튼 시작
+        // 위시리스트 시작
+        $in_wish = '';
+        $my_wish = get_wishlist_datas($member['mb_id']);
+        if(array_key_exists($row['it_id'], $my_wish)){
+         $in_wish = 'get_itemwish';
+           
+        }
         echo "<div class=\"sct_op_btn\">\n";
-        echo "<button type=\"button\" class=\"btn_wish\" data-it_id=\"{$row['it_id']}\"><span class=\"sound_only\">위시리스트</span><i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i></button>\n";
-        if ($this->view_sns) {
-            echo "<button type=\"button\" class=\"btn_share\"><span class=\"sound_only\">공유하기</span><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i></button>\n";
-        }
+        echo "<button type=\"button\" class=\"btn_wish {$in_wish}\" data-it_id=\"{$row['it_id']}\"><span class=\"sound_only\">위시리스트</span><i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i></button>\n";
         
-        echo "<div class=\"sct_sns_wrap\">";
-        if ($this->view_sns) {
-            $sns_top = $this->img_height + 10;
-            $sns_url  = $item_link_href;
-            $sns_title = get_text($row['it_name']).' | '.get_text($config['cf_title']);
-            echo "<div class=\"sct_sns\">";
-            echo "<h3>SNS 공유</h3>";
-            echo get_sns_share_link('facebook', $sns_url, $sns_title, G5_SHOP_SKIN_URL.'/img/facebook.png');
-            echo get_sns_share_link('twitter', $sns_url, $sns_title, G5_SHOP_SKIN_URL.'/img/twitter.png');
-            echo "<button type=\"button\" class=\"sct_sns_cls\"><span class=\"sound_only\">닫기</span><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>";
-            echo "</div>\n";
-        }
-        echo "<div class=\"sct_sns_bg\"></div>";
-        echo "</div></div>\n";
-        // 위시리스트 + 공유 버튼 끝
 	
     echo "</div>";
 
@@ -153,13 +141,5 @@ if($i === 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>
 <!-- } 상품진열 10 끝 -->
 
 <script>
-//SNS 공유
-$(function (){
-	$(".btn_share").on("click", function() {
-		$(this).parent("div").children(".sct_sns_wrap").show();
-	});
-    $('.sct_sns_bg, .sct_sns_cls').click(function(){
-	    $('.sct_sns_wrap').hide();
-	});
-});			
+
 </script>

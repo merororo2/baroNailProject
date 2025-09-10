@@ -12,8 +12,8 @@ add_javascript('<script src="'.G5_JS_URL.'/shop.list.action.js"></script>', 10);
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js" async></script>
 <script src="<?php echo G5_JS_URL; ?>/kakaolink.js"></script>
 <script>
-    // 사용할 앱의 Javascript 키를 설정해 주세요.
-    Kakao.init("<?php echo $config['cf_kakao_js_apikey']; ?>");
+// 사용할 앱의 Javascript 키를 설정해 주세요.
+Kakao.init("<?php echo $config['cf_kakao_js_apikey']; ?>");
 </script>
 <?php } ?>
 
@@ -135,12 +135,12 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
 
 <script>
 //SNS 공유
-$(function (){
-	$(".btn_share").on("click", function() {
-		$(this).parent("div").children(".sct_sns_wrap").show();
-	});
-    $('.sct_sns_bg, .sct_sns_cls').click(function(){
-	    $('.sct_sns_wrap').hide();
-	});
-});			
+$(function() {
+    $(".btn_share").on("click", function() {
+        $(this).parent("div").children(".sct_sns_wrap").show();
+    });
+    $('.sct_sns_bg, .sct_sns_cls').click(function() {
+        $('.sct_sns_wrap').hide();
+    });
+});
 </script>

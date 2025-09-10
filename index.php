@@ -41,7 +41,7 @@ include_once(G5_PATH.'/head.php');
 </div>
 
 <div class="latest_wr">
-<!-- 최신글 시작 { -->
+    <!-- 최신글 시작 { -->
     <?php
     //  최신글
     $sql = " select bo_table

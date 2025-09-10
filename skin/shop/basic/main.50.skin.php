@@ -67,17 +67,17 @@ foreach((array) $list as $row){
     echo "</li>\n";
 }
 if ($i >= 1) echo "</ul>\n";
-if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\n";
+if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다ㅁㄴㅇㅁㄴㅇ.</p>\n";
 ?>
 
 <script>
-$(document).ready(function(){
-	$('.smt_30').bxSlider({
-	    minSlides: 4,
-	    maxSlides: 4,
-	    mode: 'vertical',
-	    pager:false
-	});
+$(document).ready(function() {
+    $('.smt_30').bxSlider({
+        minSlides: 4,
+        maxSlides: 4,
+        mode: 'vertical',
+        pager: false
+    });
 });
 </script>
 <!-- } 상품진열 50 끝 -->

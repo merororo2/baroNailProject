@@ -10,9 +10,9 @@ if (G5_IS_MOBILE) {
     return;
 }
 
-if ($type === 1)      $g5['title'] = '네일';
-else if ($type === 2) $g5['title'] = '큐티클';
-else if ($type === 3) $g5['title'] = '젤네일';
+if ($type === 1)      $g5['title'] = '히트상품';
+else if ($type === 2) $g5['title'] = '추천상품';
+else if ($type === 3) $g5['title'] = '최신상품';
 else if ($type === 4) $g5['title'] = '인기상품';
 else if ($type === 5) $g5['title'] = '할인상품';
 else

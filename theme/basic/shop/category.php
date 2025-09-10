@@ -17,7 +17,7 @@ function get_mshop_category($ca_id, $len)
 $mshop_categories = get_shop_category_array(true);
 ?>
 <div id="category">
-	<h2>전체메뉴</h2>
+    <h2>전체메뉴</h2>
     <?php
     $i = 0;
     foreach($mshop_categories as $cate1){
@@ -27,9 +27,10 @@ $mshop_categories = get_shop_category_array(true);
         if($i == 0)
             echo '<ul class="cate">'.PHP_EOL;
     ?>
-        <li class="cate_li_1">
-            <a href="<?php echo $mshop_ca_row1['url']; ?>" class="cate_li_1_a"><?php echo get_text($mshop_ca_row1['ca_name']); ?></a>
-            <?php
+    <li class="cate_li_1">
+        <a href="<?php echo $mshop_ca_row1['url']; ?>"
+            class="cate_li_1_a"><?php echo get_text($mshop_ca_row1['ca_name']); ?></a>
+        <?php
             $j=0;
             foreach($cate1 as $key=>$cate2){
                 if( empty($cate2) || $key === 'text' ) continue;
@@ -38,17 +39,17 @@ $mshop_categories = get_shop_category_array(true);
                 if($j == 0)
                     echo '<ul class="sub_cate sub_cate1">'.PHP_EOL;
             ?>
-                <li class="cate_li_2">
-                    <a href="<?php echo $mshop_ca_row2['url']; ?>"><?php echo get_text($mshop_ca_row2['ca_name']); ?></a>
-                </li>
-            <?php
+    <li class="cate_li_2">
+        <a href="<?php echo $mshop_ca_row2['url']; ?>"><?php echo get_text($mshop_ca_row2['ca_name']); ?></a>
+    </li>
+    <?php
             $j++;
             }
 
             if($j > 0)
                 echo '</ul>'.PHP_EOL;
             ?>
-        </li>
+    </li>
     <?php
     $i++;
     }   // end for
@@ -58,26 +59,27 @@ $mshop_categories = get_shop_category_array(true);
     else
         echo '<p class="no-cate">등록된 분류가 없습니다.</p>'.PHP_EOL;
     ?>
-    <button type="button" class="close_btn"><i class="fa fa-times" aria-hidden="true"></i><span class="sound_only">카테고리 닫기</span></button>
+    <button type="button" class="close_btn"><i class="fa fa-times" aria-hidden="true"></i><span class="sound_only">카테고리
+            닫기</span></button>
 </div>
 <div id="category_all_bg"></div>
 <script>
-$(function (){
+$(function() {
     var $category = $("#category");
 
     $("#menu_open").on("click", function() {
-        $category.css("display","block");
-        $("#category_all_bg").css("display","block");
+        $category.css("display", "block");
+        $("#category_all_bg").css("display", "block");
     });
 
-    $("#category .close_btn, #category_all_bg").on("click", function(){
-        $category.css("display","none");
-		$("#category_all_bg").css("display","none");
+    $("#category .close_btn, #category_all_bg").on("click", function() {
+        $category.css("display", "none");
+        $("#category_all_bg").css("display", "none");
     });
 });
-$(document).mouseup(function (e){
-	var container = $("#category");
-	if( container.has(e.target).length === 0)
-	container.hide();
+$(document).mouseup(function(e) {
+    var container = $("#category");
+    if (container.has(e.target).length === 0)
+        container.hide();
 });
 </script>

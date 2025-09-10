@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "sansNeoBold";
+  src: url("../font/SpoqaHanSansNeo-Bold.ttf");
+}
+@font-face {
+  font-family: "sansNeoLight";
+  src: url("../font/SpoqaHanSansNeo-Light.ttf");
+}
+@font-face {
+  font-family: "sansNeoMedium";
+  src: url("../font/SpoqaHanSansNeo-Medium.ttf");
+}
+@font-face {
+  font-family: "sansNeoRegular";
+  src: url("../font/SpoqaHanSansNeo-Regular.ttf");
+}
+@font-face {
+  font-family: "sansNeoThin";
+  src: url("../font/SpoqaHanSansNeo-Thin.ttf");
+}
+
+footer {
+  background-color: #474747;
+  color: white;
+  font-size: 14px;
+}
+
+.footer-inner {
+  width: 100%;
+  margin: auto;
+}
+
+.footer-border {
+  border-bottom: 1px solid gray;
+}
+.footer-list {
+  padding: 20px 30px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  box-sizing: content-box;
+}
+
+.communication {
+  position: relative;
+}
+
+.contact {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 20px;
+  font-size: 10px;
+}
+
+.contact-icons {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  gap: 14px;
+}
+.contact-icon {
+  cursor: pointer;
+  font-size: 35px;
+  width: 35px;
+  height: 35px;
+}
+.footer-dropdown-list {
+  padding: 0px 30px;
+  overflow: hidden;
+}
+
+.footer-dropdown-list-title {
+  padding: 20px 0px;
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.footer-dropdown {
+  max-height: 0vw;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.footer-dropdown.open {
+  max-height: 100vw;
+  transition: max-height 1s ease-in-out;
+}
+
+.footer-ul {
+  padding-top: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-bottom: 30px;
+  font-size: 10px;
+}
+
+.footer-ul li a {
+  color: #aaa;
+}
+
+.open-button {
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
+
+.open-button.open {
+  transform: rotate(0deg);
+  transition: 0.5s;
+}
+
+.footer-company {
+  color: #aaa;
+  font-size: 10px;
+  padding: 20px 30px;
+}
+.footer-company-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.footer-info {
+  justify-content: space-evenly;
+  cursor: pointer;
+  font-size: 10px;
+  gap: 50px;
+}
+
+.footer-info a {
+  color: white;
+  width: 33.3%;
+  text-align: center;
+}
+.footer-info-basic {
+  color: #fff;
+}
+.footer-info-privacy {
+  color: #fffec7;
+}

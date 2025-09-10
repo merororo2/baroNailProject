@@ -14,7 +14,7 @@ foreach((array) $list as $row){
     $i++;
 
     $item_link_href = shop_item_url($row['it_id']);
-    $star_score = $row['it_use_avg'] ? (int) get_star($row['it_use_avg']) : '';
+    $star_score = $row['it_use_avg'] ? (int) get_star($row['it_use_avg']) :(int) get_star($row['it_use_avg']);
 
     if ($list_mod >= 2) { // 1줄 이미지 : 2개 이상
         if ($i%$list_mod == 0) $sct_last = ' sct_last'; // 줄 마지막
@@ -111,6 +111,6 @@ foreach((array) $list as $row){
 
 if ($i >= 1) echo "</ul>\n";
 
-if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\n";
+if($i == 0) echo "<div class=\"sct_noitem\">등록된 상품이 없습니다30.</div>\n";
 ?>
 <!-- } 상품진열 12 끝 -->

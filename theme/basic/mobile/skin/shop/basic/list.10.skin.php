@@ -12,8 +12,8 @@ add_javascript('<script src="'.G5_THEME_JS_URL.'/theme.shop.list.js"></script>',
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js" async></script>
 <script src="<?php echo G5_JS_URL; ?>/kakaolink.js"></script>
 <script>
-    // 사용할 앱의 Javascript 키를 설정해 주세요.
-    Kakao.init("<?php echo $config['cf_kakao_js_apikey']; ?>");
+// 사용할 앱의 Javascript 키를 설정해 주세요.
+Kakao.init("<?php echo $config['cf_kakao_js_apikey']; ?>");
 </script>
 <?php } ?>
 
@@ -102,8 +102,20 @@ foreach((array) $list as $row){
     }
         
     // 위시리스트 + 공유 버튼 시작 {
+
+      
+        $in_wish = '';
+           $my_wish = get_wishlist_datas($member['mb_id']);
+           if(array_key_exists($row['it_id'], $my_wish)){
+            $in_wish = 'get_itemwish';
+              
+           }
+
+            
+
+
     echo "<div class=\"sct_op_btn\">\n";
-        echo "<button type=\"button\" class=\"btn_wish\" data-it_id=\"{$row['it_id']}\"><span class=\"sound_only\">위시리스트</span><i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i></button>\n";
+       echo "<button type=\"button\" class=\"btn_wish {$in_wish}\" data-it_id=\"{$row['it_id']}\"><span class=\"sound_only\">위시리스트</span><i class=\"fa fa-heart-o\" aria-hidden=\"true\"></i></button>\n";
        if ($this->view_sns) {
            echo "<button type=\"button\" class=\"btn_share\"><span class=\"sound_only\">공유하기</span><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i></button>\n";
         }
@@ -144,32 +156,34 @@ if($i == 0) echo "<p class=\"sct_noitem\">등록된 상품이 없습니다.</p>\
 
 <?php if( !defined('G5_IS_SHOP_AJAX_LIST') ) { ?>
 <script>
-jQuery(function($){
+jQuery(function($) {
     var li_width = "<?php echo intval(100 / $this->list_mod); ?>",
         img_width = "<?php echo $this->img_width; ?>",
         img_height = "<?php echo $this->img_height; ?>",
         list_ca_id = "<?php echo $this->ca_id; ?>";
 
-    function shop_list_type_fn(type){
+    function shop_list_type_fn(type) {
         var $ul_sct = $("ul.sct");
 
-        if(type == "gallery") {
+        if (type == "gallery") {
             $ul_sct.removeClass("sct_10_list").addClass("sct_10")
-            .find(".sct_li").attr({"style":"width:"+li_width+"%"});
+                .find(".sct_li").attr({
+                    "style": "width:" + li_width + "%"
+                });
         } else {
             $ul_sct.removeClass("sct_10").addClass("sct_10_list")
-            .find(".sct_li").removeAttr("style");
+                .find(".sct_li").removeAttr("style");
         }
-        
+
         if (typeof g5_cookie_domain != 'undefined') {
-            set_cookie("ck_itemlist"+list_ca_id+"_type", type, 1, g5_cookie_domain);
+            set_cookie("ck_itemlist" + list_ca_id + "_type", type, 1, g5_cookie_domain);
         }
     }
 
     $("button.sct_lst_view").on("click", function() {
         var $ul_sct = $("ul.sct");
 
-        if($(this).hasClass("sct_lst_gallery")) {
+        if ($(this).hasClass("sct_lst_gallery")) {
             shop_list_type_fn("gallery");
         } else {
             shop_list_type_fn("list");
@@ -177,12 +191,12 @@ jQuery(function($){
     });
 
     //SNS 공유
-	$(document).on("click", ".btn_share", function(e) {
-		$(this).parent("div").children(".sct_sns_wrap").show();
-	})
-    .on("click", ".sct_sns_bg, .sct_sns_cls", function(e) {
-	    $('.sct_sns_wrap').hide();
-	});
+    $(document).on("click", ".btn_share", function(e) {
+            $(this).parent("div").children(".sct_sns_wrap").show();
+        })
+        .on("click", ".sct_sns_bg, .sct_sns_cls", function(e) {
+            $('.sct_sns_wrap').hide();
+        });
 });
 </script>
 <?php }
